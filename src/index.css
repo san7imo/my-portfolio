@@ -1,0 +1,439 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------- */
+/* Tailwind v4 Configuration                                                 */
+/* -------------------------------------------------------------------------- */
+@theme {
+  --animate-fadeInUp: fadeInUp 0.3s ease-out forwards;
+  --animate-twinkle: twinkle 2s ease-in-out infinite;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+  --animate-particle-float: particle-float 3s ease-out forwards;
+  --animate-gradient-shift: gradient-shift 3s ease infinite;
+  --animate-monitor-on: monitor-on 1s ease-out forwards;
+  --animate-glow-on: glow-on 1.5s ease-out forwards;
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-slide-up: slide-up 1s ease-out forwards;
+
+  --color-galaxy-dark: #000000;
+  --color-galaxy-night: #191970;
+  --color-galaxy-purple: #8b5cf6;
+  --color-galaxy-pink: #ec4899;
+  --color-galaxy-blue: #3b82f6;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Scrollbar Personalizado (Webkit y Firefox)                                */
+/* -------------------------------------------------------------------------- */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #2d3748;
+  border-radius: 10px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 10px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #4a5568 #2d3748;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Estilos Hero (NO TOCAR)                                                   */
+/* -------------------------------------------------------------------------- */
+
+/* Efecto de ruido de fondo */
+.bg-noise {
+  background-image: url('/assets/img/noise.png');
+  background-repeat: repeat;
+}
+
+/* Scanlines en la pantalla del monitor */
+.bg-scanlines {
+  background-image: url('/assets/img/scanlines.png');
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+}
+
+/* Animación de encendido del monitor (CRT Effect) */
+@keyframes monitor-on {
+  0% {
+    filter: brightness(0) contrast(2) grayscale(1);
+    transform: scaleY(0.01) translateY(50%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    filter: brightness(1.5) contrast(1.5) grayscale(0);
+    transform: scaleY(1) translateY(0%);
+  }
+  100% {
+    filter: brightness(1) contrast(1) grayscale(0);
+    opacity: 1;
+    transform: scaleY(1) translateY(0%);
+  }
+}
+
+.monitor-on-animation {
+  animation: monitor-on 1s ease-out forwards;
+}
+
+.monitor-screen-effect {
+  position: relative;
+  overflow: hidden;
+}
+.monitor-screen-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.1), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  pointer-events: none;
+}
+.monitor-screen-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  opacity: 0;
+  animation: glow-on 1.5s ease-out forwards;
+}
+
+@keyframes glow-on {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Animaciones para Technologies Section                                      */
+/* -------------------------------------------------------------------------- */
+
+/* Animación fadeInUp para TechInfo */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+/* Animación de parpadeo para estrellas */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Animación de flotación para elementos */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Efecto de pulso para elementos brillantes */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(138, 43, 226, 0.5);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Animación para partículas */
+@keyframes particle-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-particle-float {
+  animation: particle-float 3s ease-out forwards;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Animaciones generales                                                     */
+/* -------------------------------------------------------------------------- */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 1s ease-out forwards;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Utilidades adicionales para Technologies                                  */
+/* -------------------------------------------------------------------------- */
+
+/* Gradiente de texto */
+.bg-gradient-text {
+  background: linear-gradient(45deg, #8b5cf6, #ec4899, #3b82f6);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Efecto de cristal (glassmorphism) */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsividad                                                             */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .h-\[600px\] {
+    height: 50vh !important;
+    min-height: 320px;
+  }
+}
+
+/* Agregar estas animaciones al archivo CSS global o a tailwind.config.js */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-3px);
+  }
+  75% {
+    transform: translateY(-8px) translateX(2px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(56, 178, 172, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(56, 178, 172, 0.6);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: translateX(100vw) translateY(70vh);
+  }
+  25% {
+    transform: translateX(75vw) translateY(65vh);
+  }
+  50% {
+    transform: translateX(50vw) translateY(70vh);
+  }
+  75% {
+    transform: translateX(25vw) translateY(75vh);
+  }
+  100% {
+    transform: translateX(-20vw) translateY(70vh);
+  }
+}
+
+@keyframes footprint-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+/* Utilidades de Tailwind personalizadas */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-orbit {
+  animation: orbit 15s linear infinite;
+}
+
+.animate-footprint-appear {
+  animation: footprint-appear 0.8s ease-out forwards;
+}
+
+/* Gradientes radiales personalizados */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Filtros y efectos especiales */
+.filter-lunar {
+  filter: contrast(1.1) brightness(1.05) saturate(0.9);
+}
+
+.backdrop-blur-lunar {
+  backdrop-filter: blur(8px) brightness(1.1);
+}
+
+/* Responsive breakpoints para la luna */
+@media (max-width: 640px) {
+  .moon-responsive {
+    width: 280px !important;
+    height: 280px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .moon-responsive {
+    width: 350px !important;
+    height: 350px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .moon-responsive {
+    width: 480px !important;
+    height: 480px !important;
+  }
+}
+
+/* Animaciones para la sección de contacto */
+
+/* Animación de flotación para partículas */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-15px) translateX(3px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Pulso sutil para iconos sociales */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px -5px rgba(6, 182, 212, 0.25), 0 8px 10px -6px rgba(6, 182, 212, 0.1);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Efecto de respiración para el personaje */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
