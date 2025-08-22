@@ -171,6 +171,7 @@ const About = () => {
                     src={PROFILE_IMG}
                     alt="Foto profesional de Santiago Londoño"
                     className="w-64 h-auto md:w-80 md:h-auto shadow-2xl object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
                 </motion.div>

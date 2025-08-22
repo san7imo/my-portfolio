@@ -181,13 +181,16 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
               onClick={onMinimize}
               className="p-1.5 sm:p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white"
               title="Minimizar"
+              aria-label="Minimizar"
             >
               <Minus size={18} className="sm:w-5 sm:h-5" />
+              
             </button>
             <button
               onClick={onClose}
               className="p-1.5 sm:p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white"
               title="Cerrar"
+              aria-label="Cerrar"
             >
               <X size={18} className="sm:w-5 sm:h-5" />
             </button>
@@ -202,6 +205,7 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
               src={avatarSrc}
               alt="San7imo avatar"
               className="w-full h-full object-contain relative z-10"
+              loading="lazy"
             />
             {loading && (
               <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full px-2 py-1 text-xs font-bold flex items-center justify-center min-w-6 min-h-6 sm:min-w-8 sm:min-h-8 z-20">
@@ -283,6 +287,7 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
                   lineHeight: '1.6',
                   imageRendering: 'pixelated'
                 }}
+                aria-label="Enviar mensaje"
               >
                 {loading ? "..." : "Enviar"}
               </button>

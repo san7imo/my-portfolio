@@ -27,6 +27,7 @@ export const CategoryFilter: React.FC<Props> = ({ selected, categories, onSelect
               ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg shadow-purple-500/25"
               : "text-white hover:bg-purple-500/20 hover:text-purple-100 bg-black/30 border border-white/20 hover:border-purple-400"
           }`}
+          aria-label={`Filtrar por categoría: ${categoryLabels[cat]}`}
         >
           <span className="block transform scale-90 sm:scale-100">
             {categoryLabels[cat]}

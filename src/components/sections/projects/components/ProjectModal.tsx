@@ -40,6 +40,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             <button
               onClick={onClose}
               className="text-gray-400 hover:text-white p-2 text-2xl hover:bg-gray-800 rounded-full transition-colors"
+              aria-label="Cerrar"
             >
               ✕
             </button>
@@ -51,6 +52,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               src={project.images[currentImageIndex]}
               alt={project.title}
               className="w-full h-48 sm:h-64 md:h-80 object-contain rounded-lg"
+              loading='lazy'
             />
             
             {project.images.length > 1 && (
@@ -58,12 +60,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                 <button
                   onClick={prevImage}
                   className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-1.5 sm:p-2 rounded-full hover:bg-black/70 transition-colors"
+                  aria-label="Imagen anterior"
                 >
                   <ChevronLeft size={20} />
                 </button>
                 <button
                   onClick={nextImage}
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                  aria-label="Siguiente imagen"
                 >
                   <ChevronRight size={20} />
                 </button>
@@ -79,6 +83,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                           ? 'bg-white' 
                           : 'bg-white/50 hover:bg-white/70'
                       }`}
+                      aria-label={`Ir a la imagen ${index + 1}`}
                     />
                   ))}
                 </div>

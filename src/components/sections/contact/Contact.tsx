@@ -96,6 +96,7 @@ export default function Contact() {
         alt="Escenario urbano"
         className="absolute bottom-0 left-0 w-full h-auto object-contain"
         style={{ zIndex: 1 }}
+        loading="lazy"
       />
 
       {/* Cohete aterrizando - Con posiciones responsivas */}

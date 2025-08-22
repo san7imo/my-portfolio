@@ -31,6 +31,7 @@ const TechInfo: React.FC<TechInfoProps> = ({ technology }) => {
               src={technology.logo} 
               alt={technology.name}
               className="w-6 h-6 sm:w-8 sm:h-8"
+              loading ='lazy'
             />
           </div>
           <div>

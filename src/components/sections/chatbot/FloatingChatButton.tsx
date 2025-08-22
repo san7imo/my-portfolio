@@ -111,6 +111,7 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
         style={{
           animation: vibrate ? 'vibrate 0.1s linear infinite' : undefined,
         }}
+        aria-label="Abrir chat con San7imo"
       >
         {/* Imagen del astronauta */}
         <div className="relative flex items-center justify-center">

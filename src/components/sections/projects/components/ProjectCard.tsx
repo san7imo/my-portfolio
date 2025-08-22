@@ -45,6 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
             <button
               onClick={onViewDetails}
               className="group relative bg-gradient-to-r from-purple-600 to-orange-600 text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full font-semibold text-[10px] sm:text-sm transition-all duration-300 transform hover:scale-105 hover:from-purple-500 hover:to-orange-500 shadow-lg hover:shadow-xl"
+              aria-label={`Ver detalles del proyecto ${project.title}`}
             >
               <span className="relative z-10">Ver Detalles</span>
               

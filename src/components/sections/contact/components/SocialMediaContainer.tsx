@@ -132,6 +132,7 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
                   rel="noopener noreferrer"
                   className="group relative block p-3 transition-all duration-300 bg-transparent bg-opacity-20 rounded-xl backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-30"
                   title={social.name}
+                  aria-label={social.name}
                 >
                   {/* Icono con efecto LED y tamaño responsivo */}
                   <IconComponent 

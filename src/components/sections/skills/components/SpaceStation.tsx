@@ -103,6 +103,7 @@ const SpaceStation: React.FC<SpaceStationProps> = ({ isVisible }) => {
             style={{
               imageRendering: 'pixelated' as const,
             }}
+            loading='lazy'
           />
           
           {/* Luces */}

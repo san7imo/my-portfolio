@@ -104,6 +104,7 @@ const Projects: React.FC = () => {
                       ? 'bg-orange-400 w-4' 
                       : 'bg-gray-600 hover:bg-gray-500'
                   }`}
+                  aria-label={`Seleccionar proyecto ${index + 1}`}
                 />
               ))}
             </div>

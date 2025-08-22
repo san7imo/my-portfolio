@@ -306,6 +306,7 @@ const InteractiveCosmicCanvas: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full z-0 cursor-pointer"
+      aria-label="Lienzo interactivo del cosmos"
     />
   );
 };

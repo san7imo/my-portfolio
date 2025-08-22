@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, lazy } from 'react';
 
 export interface Project {
   id: number;
@@ -47,37 +47,47 @@ const Timeline: React.FC<TimelineProps> = ({
         planetImage: "/assets/img/planets/riwi.png",
         planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 0.7,
-        position: { x: 15, y: window.innerWidth < 640 ? 75 : 85 }
+        position: { x: 15, y: window.innerWidth < 640 ? 75 : 85 },
+        loading: lazy
+
       },
       {
         planetImage: "/assets/img/planets/compraraiz.png",
         planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 1.2,
-        position: { x: 35, y: window.innerWidth < 640 ? 25 : 35 }
+        position: { x: 35, y: window.innerWidth < 640 ? 25 : 35 },
+        loading: lazy
+
       },
       {
         planetImage: "/assets/img/planets/todorifas.png",
         planetSize: window.innerWidth < 640 ? 1.2 : window.innerWidth < 1024 ? 2.1 : 3,
         depth: 0.6,
-        position: { x: 55, y: window.innerWidth < 640 ? 70 : 80 }
+        position: { x: 55, y: window.innerWidth < 640 ? 70 : 80 },
+        loading: lazy
+
       },
       {
         planetImage: "/assets/img/planets/camionya.png",
         planetSize: window.innerWidth < 640 ? 0.9 : window.innerWidth < 1024 ? 1.4 : 1.9,
         depth: 1.1,
-        position: { x: 70, y: window.innerWidth < 640 ? 30 : 40 }
+        position: { x: 70, y: window.innerWidth < 640 ? 30 : 40 },
+        loading: lazy
       },
       {
         planetImage: "/assets/img/planets/ciberseguridad.png",
         planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 0.5,
-        position: { x: 85, y: window.innerWidth < 640 ? 65 : 75 }
+        position: { x: 85, y: window.innerWidth < 640 ? 65 : 75 },
+        loading: lazy
+
       },
       {
         planetImage: "/assets/img/planets/filavirtual.png",
         planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 1.0,
-        position: { x: 95, y: window.innerWidth < 640 ? 40 : 50 }
+        position: { x: 95, y: window.innerWidth < 640 ? 40 : 50 },
+        loading: lazy
       }
     ];
 
@@ -325,6 +335,7 @@ const Timeline: React.FC<TimelineProps> = ({
                 width: `${baseSize * planet.planetSize}px`,
                 height: `${baseSize * planet.planetSize}px`
               }}
+              aria-label={`Seleccionar proyecto: ${planet.title}`}
             >
               {/* Imagen del planeta */}
               <img
@@ -340,6 +351,7 @@ const Timeline: React.FC<TimelineProps> = ({
                     ? `drop-shadow(0 0 ${25 * planet.depth}px rgba(251, 146, 60, 0.8)) drop-shadow(0 0 ${50 * planet.depth}px rgba(168, 85, 247, 0.6)) brightness(1.1)`
                     : `brightness(${0.7 + (planet.depth * 0.3)}) contrast(${0.8 + (planet.depth * 0.2)})`
                 }}
+                loading='lazy'
               />
               
               {/* Anillo de selección para planeta activo */}

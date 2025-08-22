@@ -102,6 +102,7 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
             className={`w-full h-full object-contain filter transition-all duration-300 ${
               isSelected ? 'drop-shadow-xl brightness-105 ' : 'opacity-100 drop-shadow-lg hover:drop-shadow-xl'
             } cursor-pointer`}
+            loading='lazy'
           />
           
           {/* Borde sutil para indicar área interactiva */}
@@ -208,6 +209,7 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
                   <button
                     onClick={handleCloseModal}
                     className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-red-600/20 hover:bg-red-600/40 border border-red-400/50 sm:border-2 rounded-lg transition-all duration-200 flex items-center justify-center text-red-300 hover:text-white font-bold text-lg sm:text-xl hover:scale-110"
+                    aria-label="Cerrar terminal"                                
                   >
                     ✕
                   </button>
@@ -268,6 +270,7 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
                 <button
                   onClick={handleCloseModal}
                   className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-2 sm:py-3 md:py-4 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25 border sm:border-2 border-cyan-400/50 pixel-text text-base sm:text-lg relative overflow-hidden group"
+                  aria-label="Cerrar terminal"
                 >
                   {/* Efecto de brillo al hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>

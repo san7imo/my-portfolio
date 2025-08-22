@@ -1,0 +1,19 @@
+{
+  "name": "Santiago Londoño - FullStack Developer",
+  "short_name": "san7imo.dev",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#9333ea",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.png",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/favicon.png",
+      "type": "image/png"
+    }
+  ]
+}
