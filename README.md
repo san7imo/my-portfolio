@@ -2,7 +2,7 @@
 
 Un portafolio interactivo y dinámico desarrollado con React y TypeScript que presenta mi trabajo y habilidades a través de una experiencia inmersiva inspirada en el espacio.
 
-![Logo San7imo](/public/assets/img/logoN.png)
+![Logo San7imo](/public/assets/img/logoN.webp)
 
 ## 🌌 Características
 

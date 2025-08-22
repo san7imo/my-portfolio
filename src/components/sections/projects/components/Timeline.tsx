@@ -44,7 +44,7 @@ const Timeline: React.FC<TimelineProps> = ({
   const planetProjects: PlanetProject[] = projects.map((project, index) => {
     const planetConfigs = [
       {
-        planetImage: "/assets/img/planets/riwi.png",
+        planetImage: "/assets/img/planets/riwi.webp",
         planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 0.7,
         position: { x: 15, y: window.innerWidth < 640 ? 75 : 85 },
@@ -52,7 +52,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
       },
       {
-        planetImage: "/assets/img/planets/compraraiz.png",
+        planetImage: "/assets/img/planets/compraraiz.webp",
         planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 1.2,
         position: { x: 35, y: window.innerWidth < 640 ? 25 : 35 },
@@ -60,7 +60,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
       },
       {
-        planetImage: "/assets/img/planets/todorifas.png",
+        planetImage: "/assets/img/planets/todorifas.webp",
         planetSize: window.innerWidth < 640 ? 1.2 : window.innerWidth < 1024 ? 2.1 : 3,
         depth: 0.6,
         position: { x: 55, y: window.innerWidth < 640 ? 70 : 80 },
@@ -68,14 +68,14 @@ const Timeline: React.FC<TimelineProps> = ({
 
       },
       {
-        planetImage: "/assets/img/planets/camionya.png",
+        planetImage: "/assets/img/planets/camionya.webp",
         planetSize: window.innerWidth < 640 ? 0.9 : window.innerWidth < 1024 ? 1.4 : 1.9,
         depth: 1.1,
         position: { x: 70, y: window.innerWidth < 640 ? 30 : 40 },
         loading: lazy
       },
       {
-        planetImage: "/assets/img/planets/ciberseguridad.png",
+        planetImage: "/assets/img/planets/ciberseguridad.webp",
         planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 0.5,
         position: { x: 85, y: window.innerWidth < 640 ? 65 : 75 },
@@ -83,7 +83,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
       },
       {
-        planetImage: "/assets/img/planets/filavirtual.png",
+        planetImage: "/assets/img/planets/filavirtual.webp",
         planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 1.0,
         position: { x: 95, y: window.innerWidth < 640 ? 40 : 50 },
@@ -404,7 +404,7 @@ const Timeline: React.FC<TimelineProps> = ({
         <div className="relative">
           {/* Imagen del cohete sin rotación */}
           <img
-            src="/assets/img/cohetemano.png"
+            src="/assets/img/cohetemano.webp"
             alt="Cohete viajero"
             className={`object-contain transition-all duration-300 ${
               rocketHasStarted 

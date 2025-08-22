@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram, FaTwitter, FaWhatsapp, FaFacebook } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram, FaTwitter, FaWhatsapp, FaFacebook, FaDownload } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
-const PROFILE_IMG = "/assets/img/aboutme/sinfondo.png";
-const IMG_PATH = "/assets/img/logoCompletoN.png";
+const PROFILE_IMG = "/assets/img/aboutme/sinfondo.webp";
+const IMG_PATH = "/assets/img/logoCompletoN.webp";
 
 const About = () => {
   const [showProfile, setShowProfile] = useState(false);
@@ -113,28 +113,46 @@ const About = () => {
             y me esfuerzo día a día por ser parte de esa transformación.
           </p>
 
-          {/* Social Networks */}
-          <div className="flex justify-center md:justify-start space-x-6 mb-8">
-            {[
-              { icon: FaLinkedin, url: "https://www.linkedin.com/in/san7imo/", label: "LinkedIn" },
-              { icon: FaGithub, url: "https://github.com/san7imo", label: "GitHub" },
-              { icon: FaEnvelope, url: "mailto:san7imo@gmail.com", label: "Email" },
-              { icon: FaInstagram, url: "https://www.instagram.com/san7imo", label: "Instagram" },
-              { icon: FaTwitter, url: "https://twitter.com/San7imo", label: "Twitter" }
-            ].map((social, index) => (
-              <motion.a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white text-2xl transition-all duration-300"
-                aria-label={social.label}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <social.icon />
-              </motion.a>
-            ))}
+          {/* Social Networks and CV Button */}
+          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6 mb-8">
+            {/* Social Icons */}
+            <div className="flex space-x-6">
+              {[
+                { icon: FaLinkedin, url: "https://www.linkedin.com/in/san7imo/", label: "LinkedIn" },
+                { icon: FaGithub, url: "https://github.com/san7imo", label: "GitHub" },
+                { icon: FaEnvelope, url: "mailto:san7imo@gmail.com", label: "Email" },
+                { icon: FaInstagram, url: "https://www.instagram.com/san7imo", label: "Instagram" },
+                { icon: FaTwitter, url: "https://twitter.com/San7imo", label: "Twitter" }
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white text-2xl transition-all duration-300"
+                  aria-label={social.label}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <social.icon />
+                </motion.a>
+              ))}
+            </div>
+
+            {/* CV Download Button */}
+            <motion.a
+              href="/assets/files/CVSantiagoLondono.pdf"
+              download="CV_Santiago_Londono.pdf"
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-white to-gray-200 text-black font-semibold rounded-lg hover:from-gray-100 hover:to-gray-300 transition-all duration-300 shadow-lg hover:shadow-xl"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <FaDownload className="text-sm" />
+              <span className="content-font text-sm font-semibold">Descargar CV</span>
+            </motion.a>
           </div>
         </motion.div>
 

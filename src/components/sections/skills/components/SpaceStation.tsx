@@ -97,7 +97,7 @@ const SpaceStation: React.FC<SpaceStationProps> = ({ isVisible }) => {
         {/* Estación espacial */}
         <div className="relative">
           <img 
-            src="/assets/img/skill-section/estacion.png"
+            src="/assets/img/skill-section/estacion.webp"
             alt="Estación Espacial Internacional"
             className="w-20 h-14 md:w-24 md:h-16 lg:w-28 lg:h-20 object-contain filter drop-shadow-xl"
             style={{

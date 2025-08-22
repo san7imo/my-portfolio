@@ -116,7 +116,7 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
         {/* Imagen del astronauta */}
         <div className="relative flex items-center justify-center">
           <img 
-            src="/assets/img/astronauta1.png" 
+            src="/assets/img/astronauta1.webp" 
             alt="San7imo Assistant" 
             className={`w-14 h-14 sm:w-20 sm:h-20 object-contain filter drop-shadow-2xl transition-transform duration-200 ${
               vibrate ? 'scale-110' : 'scale-100'

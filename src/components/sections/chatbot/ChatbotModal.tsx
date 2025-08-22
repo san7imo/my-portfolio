@@ -141,12 +141,12 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
   };
 
   // Determinar frame de avatar
-  let avatarSrc = `/assets/avatar-frames/frame1.png`;
+  let avatarSrc = `/assets/avatar-frames/frame1.webp`;
 
   if (isSpeaking || isResponding) {
-    avatarSrc = `/assets/avatar-frames/frame${frameIndex + 1}.png`;
+    avatarSrc = `/assets/avatar-frames/frame${frameIndex + 1}.webp`;
   } else if (isBlinking && blinkFrameIndex > 0) {
-    avatarSrc = `/assets/avatar-frames/blink${blinkFrameIndex}.png`;
+    avatarSrc = `/assets/avatar-frames/blink${blinkFrameIndex}.webp`;
   }
 
   // Cerrar modal con Escape

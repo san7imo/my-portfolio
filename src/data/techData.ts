@@ -15,7 +15,7 @@ export const techData: Technology[] = [
   {
     id: 'react',
     name: 'React',
-    logo: '/assets/img/tech-logos/react.png',
+    logo: '/assets/img/tech-logos/react.webp',
     category: 'frontend',
     description: 'Librería JavaScript para construir interfaces de usuario interactivas y basadas en componentes reutilizables.',
     level: 'Avanzado',
@@ -23,7 +23,7 @@ export const techData: Technology[] = [
   {
     id: 'angular',
     name: 'Angular',
-    logo: '/assets/img/tech-logos/angular.png',
+    logo: '/assets/img/tech-logos/angular.webp',
     category: 'frontend',
     description: 'Framework completo para aplicaciones web SPA con herramientas integradas como routing, servicios e inyección de dependencias.',
     level: 'Básico',
@@ -31,7 +31,7 @@ export const techData: Technology[] = [
   {
     id: 'typescript',
     name: 'TypeScript',
-    logo: '/assets/img/tech-logos/typescript.png',
+    logo: '/assets/img/tech-logos/typescript.webp',
     category: 'frontend',
     description: 'Superset de JavaScript que añade tipado estático y herramientas para desarrollo escalable.',
     level: 'Avanzado',
@@ -39,7 +39,7 @@ export const techData: Technology[] = [
   {
     id: 'css3d',
     name: 'CSS 3D',
-    logo: '/assets/img/tech-logos/css3d.png',
+    logo: '/assets/img/tech-logos/css3d.webp',
     category: 'frontend',
     description: 'Uso avanzado de transformaciones 3D en CSS para crear animaciones e interfaces modernas.',
     level: 'Intermedio',
@@ -49,7 +49,7 @@ export const techData: Technology[] = [
   {
     id: 'java',
     name: 'Java',
-    logo: '/assets/img/tech-logos/java.png',
+    logo: '/assets/img/tech-logos/java.webp',
     category: 'backend',
     description: 'Lenguaje robusto ideal para aplicaciones empresariales. Dominio en OOP, colecciones y multihilos.',
     level: 'Avanzado',
@@ -57,7 +57,7 @@ export const techData: Technology[] = [
   {
     id: 'java-spring',
     name: 'Java + Spring Boot',
-    logo: '/assets/img/tech-logos/spring-boot.png',
+    logo: '/assets/img/tech-logos/spring-boot.webp',
     category: 'backend',
     description: 'Framework Java para desarrollo ágil de microservicios, APIs REST y aplicaciones empresariales.',
     level: 'Avanzado',
@@ -65,7 +65,7 @@ export const techData: Technology[] = [
   {
     id: 'php',
     name: 'PHP',
-    logo: '/assets/img/tech-logos/php.png',
+    logo: '/assets/img/tech-logos/php.webp',
     category: 'backend',
     description: 'Lenguaje de servidor ampliamente usado para desarrollo web. Experiencia en PHP moderno y buenas prácticas.',
     level: 'Intermedio',
@@ -73,7 +73,7 @@ export const techData: Technology[] = [
   {
     id: 'php-laravel',
     name: 'PHP Laravel',
-    logo: '/assets/img/tech-logos/laravel.png',
+    logo: '/assets/img/tech-logos/laravel.webp',
     category: 'backend',
     description: 'Framework PHP moderno con enfoque MVC, Eloquent ORM, Blade y sistema de autenticación integrado.',
     level: 'Intermedio',
@@ -81,7 +81,7 @@ export const techData: Technology[] = [
   {
     id: 'python',
     name: 'Python',
-    logo: '/assets/img/tech-logos/python.png',
+    logo: '/assets/img/tech-logos/python.webp',
     category: 'backend',
     description: 'Lenguaje versátil con experiencia en automatización, backend, scripting y data processing.',
     level: 'Intermedio',
@@ -89,7 +89,7 @@ export const techData: Technology[] = [
   {
     id: 'python-fastapi',
     name: 'Python FastAPI',
-    logo: '/assets/img/tech-logos/fastapi.png',
+    logo: '/assets/img/tech-logos/fastapi.webp',
     category: 'backend',
     description: 'Framework moderno para construir APIs con alto rendimiento y documentación automática.',
     level: 'Intermedio',
@@ -99,7 +99,7 @@ export const techData: Technology[] = [
   {
     id: 'git',
     name: 'Git',
-    logo: '/assets/img/tech-logos/git.png',
+    logo: '/assets/img/tech-logos/git.webp',
     category: 'devops',
     description: 'Control de versiones distribuido. Experiencia en branching, merges y flujos colaborativos.',
     level: 'Avanzado',
@@ -107,7 +107,7 @@ export const techData: Technology[] = [
   {
     id: 'docker',
     name: 'Docker',
-    logo: '/assets/img/tech-logos/docker.png',
+    logo: '/assets/img/tech-logos/docker.webp',
     category: 'devops',
     description: 'Contenerización de aplicaciones. Creación de imágenes eficientes y entornos reproducibles.',
     level: 'Avanzado',
@@ -115,7 +115,7 @@ export const techData: Technology[] = [
   {
     id: 'kubernetes',
     name: 'Kubernetes',
-    logo: '/assets/img/tech-logos/kubernetes.png',
+    logo: '/assets/img/tech-logos/kubernetes.webp',
     category: 'devops',
     description: 'Orquestación de contenedores, despliegue, escalado automático y networking de servicios.',
     level: 'Intermedio',
@@ -123,7 +123,7 @@ export const techData: Technology[] = [
   {
     id: 'jenkins',
     name: 'Jenkins',
-    logo: '/assets/img/tech-logos/jenkins.png',
+    logo: '/assets/img/tech-logos/jenkins.webp',
     category: 'devops',
     description: 'Automatización CI/CD. Experiencia en pipelines personalizados e integración con Git.',
     level: 'Básico',
@@ -131,7 +131,7 @@ export const techData: Technology[] = [
   {
     id: 'gcp',
     name: 'Google Cloud Platform',
-    logo: '/assets/img/tech-logos/gcp.png',
+    logo: '/assets/img/tech-logos/gcp.webp',
     category: 'devops',
     description: 'Plataforma de servicios cloud. Uso de GKE, Compute Engine y Cloud Functions.',
     level: 'Intermedio',
@@ -141,7 +141,7 @@ export const techData: Technology[] = [
   {
     id: 'wireshark',
     name: 'Wireshark',
-    logo: '/assets/img/tech-logos/wireshark.png',
+    logo: '/assets/img/tech-logos/wireshark.webp',
     category: 'cybersecurity',
     description: 'Captura y análisis de tráfico de red. Análisis forense y resolución de problemas de red.',
     level: 'Básico',
@@ -149,7 +149,7 @@ export const techData: Technology[] = [
   {
     id: 'splunk',
     name: 'Splunk',
-    logo: '/assets/img/tech-logos/splunk.png',
+    logo: '/assets/img/tech-logos/splunk.webp',
     category: 'cybersecurity',
     description: 'Monitoreo y visualización de logs para análisis de seguridad y creación de dashboards.',
     level: 'Básico',
@@ -157,7 +157,7 @@ export const techData: Technology[] = [
   {
     id: 'python-security',
     name: 'Python Security',
-    logo: '/assets/img/tech-logos/python.png',
+    logo: '/assets/img/tech-logos/python.webp',
     category: 'cybersecurity',
     description: 'Desarrollo de herramientas de seguridad, scraping forense y automatización en Python.',
     level: 'Intermedio',
@@ -165,7 +165,7 @@ export const techData: Technology[] = [
   {
     id: 'kali-linux',
     name: 'Kali Linux',
-    logo: '/assets/img/tech-logos/kalilinux.png',
+    logo: '/assets/img/tech-logos/kalilinux.webp',
     category: 'cybersecurity',
     description: 'Distribución Linux para pentesting con herramientas de análisis y explotación de vulnerabilidades.',
     level: 'Básico',
@@ -175,7 +175,7 @@ export const techData: Technology[] = [
 {
   id: 'mongodb',
   name: 'MongoDB',
-  logo: '/assets/img/tech-logos/mongodb.png',
+  logo: '/assets/img/tech-logos/mongodb.webp',
   category: 'databases',
   description: 'Base de datos NoSQL orientada a documentos, ideal para aplicaciones modernas con esquemas flexibles. Experiencia en modelado de colecciones, consultas agregadas y performance.',
   level: 'Básico',
@@ -183,7 +183,7 @@ export const techData: Technology[] = [
 {
   id: 'mysql',
   name: 'MySQL',
-  logo: '/assets/img/tech-logos/mysql.png',
+  logo: '/assets/img/tech-logos/mysql.webp',
   category: 'databases',
   description: 'Sistema de gestión de bases de datos relacional. Experiencia en diseño de esquemas, consultas complejas, procedimientos almacenados y optimización de índices.',
   level: 'Avanzado',
@@ -191,7 +191,7 @@ export const techData: Technology[] = [
 {
   id: 'postgresql',
   name: 'PostgreSQL',
-  logo: '/assets/img/tech-logos/postgresql.png',
+  logo: '/assets/img/tech-logos/postgresql.webp',
   category: 'databases',
   description: 'Base de datos relacional avanzada con soporte para tipos de datos personalizados, funciones SQL avanzadas, y extensiones como PostGIS.',
   level: 'Avanzado',

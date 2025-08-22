@@ -8,11 +8,11 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/assets/img/favicon.png",
+      "src": "/assets/img/favicon.webp",
       "type": "image/png"
     },
     {
-      "src": "/assets/img/favicon.png",
+      "src": "/assets/img/favicon.webp",
       "type": "image/png"
     }
   ]

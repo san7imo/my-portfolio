@@ -40,7 +40,7 @@ const MoonSurface: React.FC<MoonSurfaceProps> = ({ isVisible, children }) => {
         {/* Luna principal con tamaño grande y responsivo */}
         <div className="relative">
           <img 
-            src="/assets/img/skill-section/luna.png"
+            src="/assets/img/skill-section/luna.webp"
             alt="Superficie Lunar"
             className={`w-[100vh] h-[90vw] md:w-[100vh] md:h-[70vw] lg:w-[100vh] lg:h-[60vw] max-w-[100vh] max-h-[800px] object-contain filter drop-shadow-2xl transition-all duration-2000 ${
               hasLanded ? 'drop-shadow-2xl' : 'drop-shadow-lg'

@@ -27,7 +27,7 @@ export interface LandingPhase {
 export const softSkillsData: SoftSkillData[] = [
   {
     id: 'comunicacion',
-    image: '/assets/img/skill-section/comunicacionacertiva.png',
+    image: '/assets/img/skill-section/comunicacionacertiva.webp',
     title: 'Comunicación Efectiva',
     description: 'Capacidad para transmitir ideas de manera clara y persuasiva, adaptándome al contexto y audiencia específica.',
     story: 'Durante mi experiencia profesional, he aprendido que la comunicación efectiva va más allá de hablar bien. Incluye escuchar activamente, adaptar el mensaje al público y crear conexiones auténticas.',
@@ -36,7 +36,7 @@ export const softSkillsData: SoftSkillData[] = [
   },
   {
     id: 'trabajo-equipo',
-    image: '/assets/img/skill-section/trabajoenequipo.png',
+    image: '/assets/img/skill-section/trabajoenequipo.webp',
     title: 'Trabajo en Equipo',
     description: 'Habilidad para colaborar eficientemente con otros, aprovechando la diversidad de talentos para lograr objetivos comunes.',
     story: 'He trabajado en equipos multidisciplinarios donde cada miembro aportaba perspectivas únicas. Aprendí que el éxito del equipo supera siempre al éxito individual.',
@@ -45,7 +45,7 @@ export const softSkillsData: SoftSkillData[] = [
   },
   {
     id: 'resolucion-problemas',
-    image: '/assets/img/skill-section/resoluciondeproblemas.png',
+    image: '/assets/img/skill-section/resoluciondeproblemas.webp',
     title: 'Resolución de Problemas',
     description: 'Enfoque analítico y creativo para identificar problemas, evaluar alternativas y implementar soluciones efectivas.',
     story: 'Cada desafío técnico me ha enseñado a pensar de manera estructurada pero flexible, combinando análisis lógico con creatividad para encontrar soluciones innovadoras.',
@@ -54,7 +54,7 @@ export const softSkillsData: SoftSkillData[] = [
   },
   {
     id: 'liderazgo',
-    image: '/assets/img/skill-section/liderazgo.png',
+    image: '/assets/img/skill-section/liderazgo.webp',
     title: 'Liderazgo',
     description: 'Capacidad para inspirar, motivar y guiar a otros hacia el logro de objetivos, creando un ambiente de confianza y crecimiento.',
     story: 'He liderado proyectos donde el éxito dependía no solo de la dirección técnica, sino de empoderar al equipo y crear una visión compartida.',
@@ -63,7 +63,7 @@ export const softSkillsData: SoftSkillData[] = [
   },
   {
     id: 'aprendizaje-continuo',
-    image: '/assets/img/skill-section/aprendizaje.png',
+    image: '/assets/img/skill-section/aprendizaje.webp',
     title: 'Aprendizaje Continuo',
     description: 'Mentalidad de crecimiento constante, adaptándome a nuevas tecnologías y metodologías con curiosidad y perseverancia.',
     story: 'En un campo que evoluciona constantemente, he desarrollado la disciplina de mantenerme actualizado y la humildad de reconocer que siempre hay algo nuevo que aprender.',
@@ -72,7 +72,7 @@ export const softSkillsData: SoftSkillData[] = [
   },
   {
     id: 'adaptabilidad',
-    image: '/assets/img/skill-section/adaptabilidad.png',
+    image: '/assets/img/skill-section/adaptabilidad.webp',
     title: 'Adaptabilidad',
     description: 'Flexibilidad para ajustarme a cambios del entorno, nuevas circunstancias y metodologías de trabajo emergentes.',
     story: 'Los cambios constantes en la industria tecnológica me han enseñado a ver la incertidumbre como una oportunidad para crecer y encontrar nuevas formas de agregar valor.',
@@ -81,7 +81,7 @@ export const softSkillsData: SoftSkillData[] = [
   },
   {
     id: 'creatividad',
-    image: '/assets/img/skill-section/creatividad.png',
+    image: '/assets/img/skill-section/creatividad.webp',
     title: 'Creatividad',
     description: 'Capacidad para generar ideas innovadoras y soluciones únicas, combinando pensamiento crítico y originalidad.',
     story: 'La creatividad no solo se aplica al diseño, sino a encontrar nuevas formas de abordar problemas complejos y mejorar procesos existentes.',

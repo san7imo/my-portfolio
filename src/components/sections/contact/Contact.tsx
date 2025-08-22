@@ -75,7 +75,7 @@ export default function Contact() {
     >
       {/* Imagen del título - Responsiva */}
       <img 
-        src="/assets/img/contact-section/titulo.png"
+        src="/assets/img/contact-section/titulo.webp"
         alt="Contáctame"
         className="absolute z-1"
         style={{
@@ -92,7 +92,7 @@ export default function Contact() {
 
       {/* Imagen del escenario urbano en la parte inferior */}
       <img 
-        src="/assets/img/contact-section/fondocontacto1.png"
+        src="/assets/img/contact-section/fondocontacto1.webp"
         alt="Escenario urbano"
         className="absolute bottom-0 left-0 w-full h-auto object-contain"
         style={{ zIndex: 1 }}

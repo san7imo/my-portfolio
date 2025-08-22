@@ -54,13 +54,13 @@
 
 /* Efecto de ruido de fondo */
 .bg-noise {
-  background-image: url('/assets/img/noise.png');
+  background-image: url('/assets/img/noise.webp');
   background-repeat: repeat;
 }
 
 /* Scanlines en la pantalla del monitor */
 .bg-scanlines {
-  background-image: url('/assets/img/scanlines.png');
+  background-image: url('/assets/img/scanlines.webp');
   background-repeat: repeat-y;
   background-size: 100% auto;
 }

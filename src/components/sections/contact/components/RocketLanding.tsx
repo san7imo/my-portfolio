@@ -68,7 +68,7 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
       console.warn('No se pudo cargar la imagen del cohete, usando fallback');
       setImageLoaded(true);
     };
-    img.src = "/assets/img/contact-section/cohete.png";
+    img.src = "/assets/img/contact-section/cohete.webp";
   }, []);
 
   // Actualizar escala cuando cambie la configuración responsiva

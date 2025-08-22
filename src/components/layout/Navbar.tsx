@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaLaptopCode, FaProjectDiagram, FaBrain, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
 
@@ -13,12 +13,17 @@ const navLinksRight = [
   { id: 'contact', name: 'Contacto', icon: FaEnvelope },
 ];
 
-const LOGO_PATH = "/assets/img/logoN.png";
+const LOGO_PATH = "/assets/img/logoN.webp";
 
 export default function Navbar() {
   const [activeLink, setActiveLink] = useState('technologies');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Verificar si estamos en la página principal
+  const isHomePage = location.pathname === '/' || location.pathname === '/home';
 
   useEffect(() => {
     // Mostrar el botón después de 2 segundos
@@ -27,6 +32,8 @@ export default function Navbar() {
     }, 2000);
 
     const handleScroll = () => {
+      if (!isHomePage) return; // Solo manejar scroll en la página principal
+
       const allNavLinks = [...navLinksLeft, ...navLinksRight];
       const sections = allNavLinks.map(link => document.getElementById(link.id)).filter(Boolean);
 
@@ -65,7 +72,33 @@ export default function Navbar() {
       window.removeEventListener('keydown', handleKeyDown);
       clearTimeout(timer);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isHomePage]);
+
+  // Función para manejar la navegación con anclas
+  const handleNavigation = (linkId: string) => {
+    closeMenu();
+    
+    if (isHomePage) {
+      // Si estamos en la página principal, hacer scroll suave
+      const element = document.getElementById(linkId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setActiveLink(linkId);
+      }
+    } else {
+      // Si no estamos en la página principal, navegar y hacer scroll
+      navigate(`/#${linkId}`);
+      
+      // Esperar a que se cargue la página y hacer scroll
+      setTimeout(() => {
+        const element = document.getElementById(linkId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          setActiveLink(linkId);
+        }
+      }, 100);
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -102,8 +135,6 @@ export default function Navbar() {
             <FaBars className="text-xl transition-transform duration-300" />
           )}
         </div>
-
-
       </button>
 
       {/* Menú desplegable de pantalla completa */}
@@ -131,36 +162,33 @@ export default function Navbar() {
           `}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Logo principal */}
+          {/* Logo principal - siempre navega al home */}
           <div className={`
-            mb-16 transition-all duration-500 delay-200
+            mb-16 transition-all duration-500 delay-200 cursor-pointer
             ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
           `}>
-            <img
-              src={LOGO_PATH}
-              alt="San7imo Logo"
-              className="h-24 md:h-32 w-auto filter drop-shadow-2xl hover:scale-110 transition-transform duration-300"
-            />
+            <RouterLink to="/" onClick={closeMenu}>
+              <img
+                src={LOGO_PATH}
+                alt="San7imo Logo"
+                className="h-24 md:h-32 w-auto filter drop-shadow-2xl hover:scale-110 transition-transform duration-300"
+              />
+            </RouterLink>
           </div>
 
           {/* Navegación principal */}
           <nav className="flex flex-col items-center space-y-6">
             {allNavLinks.map((link, index) => (
-              <Link
+              <button
                 key={link.id}
-                to={link.id}
-                smooth={true}
-                duration={500}
-                spy={true}
-                onSetActive={() => setActiveLink(link.id)}
-                onClick={closeMenu}
+                onClick={() => handleNavigation(link.id)}
                 className={`
                   group flex items-center text-2xl md:text-3xl font-light
                   text-gray-300 hover:text-purple-400 cursor-pointer
                   transition-all duration-500 ease-out
                   py-4 px-8 rounded-xl
                   hover:bg-white/5 hover:backdrop-blur-sm
-                  border border-transparent                   hover:border-purple-400/20
+                  border border-transparent hover:border-purple-400/20
                   transform hover:scale-105
                   ${activeLink === link.id ? 'text-purple-400 bg-purple-400/10 border-purple-400/30' : ''}
                   ${isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}
@@ -176,7 +204,7 @@ export default function Navbar() {
                 {activeLink === link.id && (
                   <div className="absolute left-0 w-1 h-8 bg-gradient-to-b from-purple-400 to-indigo-500 rounded-r-full"></div>
                 )}
-              </Link>
+              </button>
             ))}
 
             {/* Separador elegante */}
@@ -187,8 +215,8 @@ export default function Navbar() {
             `}></div>
 
             {/* Link especial "Acerca de mí" */}
-            <a
-              href="/about"
+            <RouterLink
+              to="/about"
               onClick={closeMenu}
               className={`
                 group flex items-center text-2xl md:text-3xl font-light
@@ -206,7 +234,7 @@ export default function Navbar() {
             >
               <FiUser className="mr-4 text-3xl group-hover:animate-pulse" />
               <span className="font-mono tracking-wide">Acerca de mí</span>
-            </a>
+            </RouterLink>
           </nav>
 
           {/* Indicador de ayuda */}

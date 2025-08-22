@@ -75,7 +75,7 @@ const CharacterWithDialog: React.FC<CharacterWithDialogProps> = ({
         }}
       >
         <img 
-          src="/assets/img/contact-section/personaje.png"
+          src="/assets/img/contact-section/personaje.webp"
           alt="Personaje explorador"
           className="object-contain"
           style={{
