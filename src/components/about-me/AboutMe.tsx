@@ -116,9 +116,9 @@ const About = () => {
           {/* Social Networks */}
           <div className="flex justify-center md:justify-start space-x-6 mb-8">
             {[
-              { icon: FaLinkedin, url: "https://www.linkedin.com/in/santiago-londo%C3%B1o-09a3a426b/", label: "LinkedIn" },
-              { icon: FaGithub, url: "https://github.com/LMSanti", label: "GitHub" },
-              { icon: FaEnvelope, url: "mailto:santiago.londono07@gmail.com", label: "Email" },
+              { icon: FaLinkedin, url: "https://www.linkedin.com/in/san7imo/", label: "LinkedIn" },
+              { icon: FaGithub, url: "https://github.com/san7imo", label: "GitHub" },
+              { icon: FaEnvelope, url: "mailto:san7imo@gmail.com", label: "Email" },
               { icon: FaInstagram, url: "https://www.instagram.com/san7imo", label: "Instagram" },
               { icon: FaTwitter, url: "https://twitter.com/San7imo", label: "Twitter" }
             ].map((social, index) => (

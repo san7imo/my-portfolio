@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
       {/* Instrucciones de interacción - Aparecen después de las animaciones */}
       {showInstructions && (
         <div 
-          className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-10 text-center opacity-0"
+          className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-10 text-center opacity-0"
           style={{ animation: 'galaxyPulse 2s ease-in-out infinite, fadeIn 1s ease-out forwards' }}
         >
           <div className="flex flex-col items-center space-y-4">

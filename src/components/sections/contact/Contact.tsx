@@ -4,6 +4,7 @@ import DaySkyWithSunCanvas from "./components/DaySkyWithSunCanvas";
 import RocketLanding from "./components/RocketLanding";
 import CharacterWithDialog from "./components/CharacterDialog";
 import SocialIcons from "./components/SocialMediaContainer";
+import useResponsiveLayout from "../../../hooks/useResponsiveLayout";
 
 export default function Contact() {
   const [showRocket, setShowRocket] = useState(false);
@@ -11,6 +12,9 @@ export default function Contact() {
   const [showSocialIcons, setShowSocialIcons] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  
+  // Hook de responsividad
+  const { positions, breakpoints } = useResponsiveLayout();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,13 +70,21 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center p-10 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ padding: breakpoints.mobile ? '20px 10px' : '40px 20px' }}
     >
-      {/* Imagen del título */}
+      {/* Imagen del título - Responsiva */}
       <img 
         src="/assets/img/contact-section/titulo.png"
         alt="Contáctame"
-        className="absolute top-15 left-1/2 transform -translate-x-1/2 z-1 max-w-30 md:max-w-30 lg:max-w-200 h-auto"
+        className="absolute z-1"
+        style={{
+          top: positions.title.top,
+          left: positions.title.left,
+          transform: positions.title.transform,
+          maxWidth: positions.title.maxWidth,
+          height: 'auto',
+        }}
       />
 
       {/* Fondo canvas - cielo con sol */}
@@ -86,41 +98,43 @@ export default function Contact() {
         style={{ zIndex: 1 }}
       />
 
-      {/* Cohete aterrizando */}
+      {/* Cohete aterrizando - Con posiciones responsivas */}
       {showRocket && (
         <RocketLanding 
           onLandingComplete={handleRocketLandingComplete}
           className="z-10"
+          responsiveConfig={positions.rocketLanding}
         />
       )}
 
-      {/* Personaje con diálogo */}
+      {/* Personaje con diálogo - Responsivo */}
       <CharacterWithDialog 
         isVisible={showCharacter}
         onDialogComplete={handleDialogComplete}
         className="z-20"
+        responsiveConfig={{
+          character: positions.character,
+          dialog: positions.dialog
+        }}
       />
 
-      {/* Iconos de redes sociales */}
+      {/* Iconos de redes sociales - Responsivos */}
       <SocialIcons 
         isVisible={showSocialIcons}
-        className="bottom-8 left-8"
-        /* 
-        PARA CAMBIAR POSICIÓN GLOBAL DE ICONOS:
-        Modifica className con diferentes posiciones:
-        - "bottom-8 left-8": esquina inferior izquierda
-        - "bottom-8 right-8": esquina inferior derecha
-        - "top-8 right-8": esquina superior derecha
-        - "bottom-20 left-20": más separado de esquinas
-        - O valores específicos: style={{ bottom: '100px', left: '200px' }}
-        */
+        className="z-30"
+        responsiveConfig={positions.socialIcons}
       />
 
       {/* Contenido por defecto mientras esperamos */}
       {!showRocket && (
         <div className="relative z-10 text-center">
           <div className="animate-pulse">
-            <h2 className="text-4xl font-bold text-cyan-400 mb-4">
+            <h2 
+              className={`font-bold text-cyan-400 mb-4 ${
+                breakpoints.mobile ? 'text-2xl' : 
+                breakpoints.tablet ? 'text-3xl' : 'text-4xl'
+              }`}
+            >
               🚀 Preparando el aterrizaje...
             </h2>
             <div className="flex justify-center space-x-2">

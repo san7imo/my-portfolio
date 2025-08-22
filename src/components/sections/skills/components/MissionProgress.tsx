@@ -17,20 +17,20 @@ const MissionProgress: React.FC<MissionProgressProps> = ({
   const progressPercentage = (exploredSkills.size / totalSkills) * 100;
 
   return (
-    <div className={`transition-all duration-1000 max-w-md w-80 ${
+    <div className={`transition-all duration-1000 max-w-md w-[260px] sm:w-80 z-[15] ${
       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
     }`}>
-      <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 border-2 border-cyan-500/40 shadow-xl">
+      <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-3 sm:p-4 border-2 border-cyan-500/40 shadow-xl">
         
         {/* Header de la barra de progreso */}
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <span className="text-cyan-400 font-bold text-sm pixel-text">PROGRESO DE EXPLORACIÓN</span>
+        <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-cyan-400 font-bold text-xs sm:text-sm pixel-text">PROGRESO DE EXPLORACIÓN</span>
             {missionCompleted && (
-              <span className="text-green-400 font-bold text-sm animate-pulse">🎯</span>
+              <span className="text-green-400 font-bold text-xs sm:text-sm animate-pulse">🎯</span>
             )}
           </div>
-          <span className="text-white font-bold text-sm">
+          <span className="text-white font-bold text-xs sm:text-sm">
             {exploredSkills.size}/{totalSkills}
           </span>
         </div>

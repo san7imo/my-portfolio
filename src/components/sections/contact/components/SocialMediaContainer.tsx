@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 
+interface ResponsiveSocialConfig {
+  position: {
+    top?: string;
+    bottom?: string;
+    left?: string;
+    right?: string;
+    transform?: string;
+  };
+  iconSize: number;
+  spacing: string;
+  flexDirection: 'row' | 'column';
+}
+
 interface SocialIconsProps {
   isVisible: boolean;
   className?: string;
+  responsiveConfig: ResponsiveSocialConfig;
 }
 
 const SocialIcons: React.FC<SocialIconsProps> = ({
   isVisible,
   className = "",
+  responsiveConfig,
 }) => {
   const [showIcons, setShowIcons] = useState(false);
 
@@ -21,7 +36,7 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
     {
       name: "GitHub",
       icon: Github,
-      url: "https://github.com/san7ilo",
+      url: "https://github.com/san7imo",
     },
     {
       name: "Email",
@@ -47,6 +62,8 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
 
   if (!isVisible) return null;
 
+  const { position, iconSize, spacing, flexDirection } = responsiveConfig;
+
   return (
     <>
       {/* Estilos CSS para el efecto LED */}
@@ -70,7 +87,7 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
         }
         
         .led-icon {
-          color:rgb(255, 255, 255);
+          color: rgb(255, 255, 255);
           animation: ledGlow 2s ease-in-out infinite, pulse 3s ease-in-out infinite;
         }
         
@@ -82,11 +99,18 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
       `}</style>
       
       <div 
-        className={`absolute top-155 left-166 transform -translate-x-1/2 -translate-y-1/2 ${className}`} 
-        style={{ zIndex: 25 }}
+        className={`absolute ${className}`}
+        style={{
+          ...position,
+          zIndex: 25,
+        }}
       >
-        {/* Distribución horizontal de los iconos */}
-        <div className="flex flex-row space-x-8 items-center">
+        {/* Distribución de iconos según configuración responsiva */}
+        <div 
+          className={`flex items-center ${
+            flexDirection === 'row' ? spacing : 'space-y-4 flex-col'
+          }`}
+        >
           {socialLinks.map((social, index) => {
             const IconComponent = social.icon;
             
@@ -109,19 +133,21 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
                   className="group relative block p-3 transition-all duration-300 bg-transparent bg-opacity-20 rounded-xl backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-30"
                   title={social.name}
                 >
-                  {/* Icono con efecto LED */}
+                  {/* Icono con efecto LED y tamaño responsivo */}
                   <IconComponent 
-                    size={40}
+                    size={iconSize}
                     className="led-icon transition-all duration-300"
                   />
                   
                   {/* Efecto de brillo adicional en hover */}
-                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300"
-                       style={{
-                         background: 'radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)',
-                         filter: 'blur(8px)',
-                         transform: 'scale(1.5)'
-                       }}>
+                  <div 
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300"
+                    style={{
+                      background: 'radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)',
+                      filter: 'blur(8px)',
+                      transform: 'scale(1.5)'
+                    }}
+                  >
                   </div>
                 </a>
               </div>

@@ -172,39 +172,39 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
       />
       
       {/* Modal */}
-      <div className="fixed inset-4 md:inset-8 lg:inset-16 bg-black border border-gray-700 rounded-2xl z-50 flex flex-col overflow-hidden">
+      <div className="fixed inset-2 sm:inset-4 md:inset-8 lg:inset-16 bg-black border border-gray-700 rounded-2xl z-50 flex flex-col overflow-hidden">
         {/* Header del Modal */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-gray-900/50">
-          <h2 className="text-white font-mono text-lg">San7imo Assistant</h2>
-          <div className="flex gap-2">
+        <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-700 bg-gray-900/50">
+          <h2 className="text-white font-mono text-base sm:text-lg">San7imo Assistant</h2>
+          <div className="flex gap-1 sm:gap-2">
             <button
               onClick={onMinimize}
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white"
+              className="p-1.5 sm:p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white"
               title="Minimizar"
             >
-              <Minus size={20} />
+              <Minus size={18} className="sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white"
+              className="p-1.5 sm:p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white"
               title="Cerrar"
             >
-              <X size={20} />
+              <X size={18} className="sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
 
         {/* Contenido del Chat */}
-        <div className="flex-1 flex p-6 overflow-hidden">
+        <div className="flex-1 flex flex-col sm:flex-row p-3 sm:p-6 overflow-hidden">
           {/* Avatar */}
-          <div className="w-32 h-32 md:w-40 md:h-40 mr-6 flex-shrink-0 relative">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto sm:mr-6 mb-3 sm:mb-0 flex-shrink-0 relative">
             <img
               src={avatarSrc}
               alt="San7imo avatar"
               className="w-full h-full object-contain relative z-10"
             />
             {loading && (
-              <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full px-2 py-1 text-xs font-bold flex items-center justify-center min-w-8 min-h-8 z-20">
+              <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full px-2 py-1 text-xs font-bold flex items-center justify-center min-w-6 min-h-6 sm:min-w-8 sm:min-h-8 z-20">
                 {thinkingDots}
               </div>
             )}
@@ -215,16 +215,15 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
             {/* Messages */}
             <div
               ref={scrollRef}
-              className="flex-1 flex flex-col space-y-3 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent"
+              className="flex-1 flex flex-col space-y-2 sm:space-y-3 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent"
             >
               {/* Intro Messages */}
               {hasStartedIntro && introMessages.slice(0, currentIntroIndex + 1).map((msg, i) => (
                 <div
                   key={`intro-${i}`}
-                  className="bg-gray-800/90 backdrop-blur-sm text-white p-3 rounded-xl border border-gray-700 shadow-md max-w-md self-start whitespace-pre-wrap"
+                  className="bg-gray-800/90 backdrop-blur-sm text-white p-2 sm:p-3 rounded-xl border border-gray-700 shadow-md max-w-[85%] sm:max-w-md self-start whitespace-pre-wrap text-sm sm:text-base"
                   style={{ 
                     fontFamily: 'monospace',
-                    fontSize: '14px',
                     lineHeight: '1.6',
                     imageRendering: 'pixelated'
                   }}
@@ -241,11 +240,10 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
                     key={`msg-${i}`}
                     style={{ 
                       fontFamily: 'monospace',
-                      fontSize: '14px',
                       lineHeight: '1.6',
                       imageRendering: 'pixelated'
                     }}
-                    className={`p-3 rounded-xl shadow-md max-w-md ${
+                    className={`p-2 sm:p-3 rounded-xl shadow-md max-w-[85%] sm:max-w-md text-sm sm:text-base ${
                       msg.role === "user"
                         ? "bg-white/95 backdrop-blur-sm text-black self-end border border-gray-300"
                         : "bg-gray-800/90 backdrop-blur-sm text-white self-start border border-gray-700"
@@ -261,17 +259,16 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
             {/* Input */}
             <form
               onSubmit={handleSubmit}
-              className="mt-4 flex items-center space-x-2"
+              className="mt-3 sm:mt-4 flex items-center space-x-2"
             >
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={loading ? "Santiago está pensando..." : "Escribe algo para San7imo..."}
-                className="flex-grow px-4 py-2 rounded-xl bg-gray-900/90 backdrop-blur-sm border border-gray-700 text-white placeholder-gray-500 outline-none focus:border-blue-500 transition-colors"
+                className="flex-grow px-3 sm:px-4 py-2 rounded-xl bg-gray-900/90 backdrop-blur-sm border border-gray-700 text-white placeholder-gray-500 outline-none focus:border-blue-500 transition-colors text-sm sm:text-base"
                 style={{ 
                   fontFamily: 'monospace',
-                  fontSize: '14px',
                   lineHeight: '1.6',
                   imageRendering: 'pixelated'
                 }}
@@ -280,10 +277,9 @@ export default function ChatbotModal({ isOpen, onClose, onMinimize }: ChatbotMod
               <button
                 type="submit"
                 disabled={loading || isResponding}
-                className="bg-white/95 backdrop-blur-sm text-black px-4 py-2 rounded-xl font-semibold hover:bg-gray-200/95 transition-colors disabled:opacity-50"
+                className="bg-white/95 backdrop-blur-sm text-black px-3 sm:px-4 py-2 rounded-xl font-semibold hover:bg-gray-200/95 transition-colors disabled:opacity-50 text-sm sm:text-base whitespace-nowrap"
                 style={{ 
                   fontFamily: 'monospace',
-                  fontSize: '14px',
                   lineHeight: '1.6',
                   imageRendering: 'pixelated'
                 }}

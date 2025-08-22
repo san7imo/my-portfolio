@@ -24,7 +24,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <section id="projects" className="relative h-screen overflow-hidden">
       {/* Canvas de fondo */}
       <NebulaCanvas className="z-0" />
       
@@ -55,7 +55,7 @@ const Projects: React.FC = () => {
           </div>
 
           {/* Contenido dinámico - se ajusta al espacio restante, más arriba */}
-          <div className="flex-1 flex flex-col justify-start pt-4">
+          <div className="flex-1 flex flex-col justify-start">
             {/* Proyecto activo destacado - Solo si se ha hecho clic */}
             {hasClickedPlanet && (
               <ProjectCard
@@ -66,12 +66,12 @@ const Projects: React.FC = () => {
             
             {/* Instrucciones iniciales */}
             {!hasClickedPlanet && (
-              <div className="flex-1 flex items-center justify-center">
-                <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-purple-500/20 max-w-xl mx-auto text-center">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 bg-gradient-to-r from-purple-300 to-orange-300 bg-clip-text text-transparent">
+              <div className="flex-1 flex items-start sm:items-center justify-center -mt-16 sm:mt-0">
+                <div className="bg-black/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-purple-500/20 max-w-xl mx-auto text-center">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 bg-gradient-to-r from-purple-300 to-orange-300 bg-clip-text text-transparent">
                     ¡Comienza tu Viaje Espacial!
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed mb-4">
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-2 sm:mb-4">
                     Haz clic en cualquier planeta para explorar mis proyectos y ver al astronauta navegar por el cosmos.
                   </p>
                   <div className="flex justify-center">
@@ -87,8 +87,8 @@ const Projects: React.FC = () => {
           </div>
           
           {/* Indicador de navegación compacto */}
-          <div className="text-center py-2 flex-shrink-0">
-            <p className="text-gray-400 text-xs mb-2">
+          <div className="text-center pt-1 pb-2 flex-shrink-0">
+            <p className="text-gray-400 text-[10px] sm:text-xs -mt-2 sm:mt-0 mb-1 sm:mb-2">
               {hasClickedPlanet 
                 ? `Planeta ${activeProject + 1} de ${projectsData.length} • Haz clic en otros planetas`
                 : 'Haz clic en los planetas para comenzar'
@@ -117,7 +117,7 @@ const Projects: React.FC = () => {
         isOpen={showProjectModal}
         onClose={handleCloseModal}
       />
-    </div>
+    </section>
   );
 };
 

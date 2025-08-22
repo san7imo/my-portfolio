@@ -48,7 +48,6 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
     return () => clearInterval(interval);
   }, []);
 
-  // Opcional: Ocultar el botón cuando se hace scroll hacia arriba muy rápido
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -81,22 +80,22 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
 
   return (
     <div
-      className={`fixed bottom-6 left-6 z-30 transition-all duration-300 ${
+      className={`fixed bottom-4 sm:bottom-6 right-7 sm:right-10 z-30 transition-all duration-300 ${
         isVisible ? 'transform translate-y-0 opacity-100' : 'transform translate-y-16 opacity-0'
       }`}
     >
       {/* Mensaje "Chatea conmigo" */}
-      <div className={`absolute bottom-full left-0 mb-3 transition-all duration-500 ${
+      <div className={`absolute bottom-full left-0 mb-2 sm:mb-3 transition-all duration-500 ${
         showMessage ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2 pointer-events-none'
       }`}>
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-2xl shadow-lg border border-blue-400/30 backdrop-blur-sm">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl shadow-lg border border-blue-400/30 backdrop-blur-sm">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
-            <span className="font-mono text-sm font-medium">¡Chatea conmigo!</span>
+            <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-yellow-300 rounded-full animate-pulse"></div>
+            <span className="font-mono text-xs sm:text-sm font-medium">¡Chatea conmigo!</span>
           </div>
           {/* Flecha del mensaje */}
           <div className="absolute top-full left-6 transform -translate-x-1/2">
-            <div className="border-8 border-transparent border-t-blue-600"></div>
+            <div className="border-[6px] sm:border-8 border-transparent border-t-blue-600"></div>
           </div>
         </div>
       </div>
@@ -113,12 +112,12 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
           animation: vibrate ? 'vibrate 0.1s linear infinite' : undefined,
         }}
       >
-        {/* Imagen del cohete - ahora más grande */}
+        {/* Imagen del astronauta */}
         <div className="relative flex items-center justify-center">
           <img 
             src="/assets/img/astronauta1.png" 
             alt="San7imo Assistant" 
-            className={`w-20 h-20 object-contain filter drop-shadow-2xl transition-transform duration-200 ${
+            className={`w-14 h-14 sm:w-20 sm:h-20 object-contain filter drop-shadow-2xl transition-transform duration-200 ${
               vibrate ? 'scale-110' : 'scale-100'
             }`}
             style={{
@@ -129,8 +128,8 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
 
         {/* Indicador de mensaje nuevo */}
         {hasNewMessage && (
-          <div className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full animate-bounce flex items-center justify-center shadow-lg">
-            <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+          <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-4 sm:w-5 h-4 sm:h-5 bg-red-500 rounded-full animate-bounce flex items-center justify-center shadow-lg">
+            <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 bg-white rounded-full"></div>
           </div>
         )}
 
@@ -139,14 +138,14 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
         <div className={`absolute inset-0 rounded-full border-2 border-purple-400 ${pulse || vibrate ? 'animate-ping' : ''} opacity-0 ${pulse || vibrate ? 'opacity-40' : ''} delay-75`}></div>
       </button>
 
-      {/* Tooltip mejorado - solo visible en hover */}
-      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        <div className="bg-gray-900/95 backdrop-blur-sm text-white text-sm rounded-xl px-4 py-2 shadow-xl border border-gray-700 whitespace-nowrap">
+      {/* Tooltip mejorado - solo visible en hover y en pantallas mayores a sm */}
+      <div className="hidden sm:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div className="bg-gray-900/95 backdrop-blur-sm text-white text-xs sm:text-sm rounded-xl px-3 sm:px-4 py-1.5 sm:py-2 shadow-xl border border-gray-700 whitespace-nowrap">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-400 rounded-full animate-pulse"></div>
             <span>Asistente IA San7imo</span>
           </div>
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-6 border-transparent border-t-gray-900/95"></div>
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-[6px] border-transparent border-t-gray-900/95"></div>
         </div>
       </div>
 

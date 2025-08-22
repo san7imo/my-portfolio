@@ -437,3 +437,240 @@
 .animate-breathe {
   animation: breathe 4s ease-in-out infinite;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Responsive Height Management - Pantallas con poca altura                  */
+/* -------------------------------------------------------------------------- */
+
+/* Media query para detectar pantallas con altura menor a 700px */
+@media (max-height: 700px) {
+  
+  /* ===== SECCIONES GENERALES ===== */
+  /* Cambiar todas las secciones de h-screen a min-h-screen para permitir expansión */
+  section[id="technologies"],
+  section[id="projects"], 
+  section[id="skills"],
+  section[id="contact"] {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* ===== SECCIÓN TECHNOLOGIES ===== */
+  #technologies {
+    /* Permitir scroll vertical */
+    overflow-y: auto !important;
+  }
+
+  #technologies .relative.z-20 {
+    /* Contenedor principal más compacto */
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  #technologies h2 {
+    /* Título más pequeño */
+    font-size: 2.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  #technologies .relative.z-30.mb-8 {
+    /* Filtro de categorías más compacto */
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* ===== SECCIÓN PROJECTS ===== */
+  #projects .relative.z-10.h-full {
+    /* Contenedor principal expandible */
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+
+  #projects .text-center.mb-6 {
+    /* Título más compacto */
+    margin-bottom: 1.5rem !important;
+  }
+
+  #projects h2 {
+    /* Título más pequeño */
+    font-size: 2rem !important;
+  }
+
+  #projects .flex-shrink-0.mb-2.mt-4 {
+    /* Timeline más compacta */
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  #projects .flex-1.flex.flex-col {
+    /* Contenido principal con más espacio */
+    min-height: auto !important;
+  }
+
+  #projects .text-center.pt-1.pb-2 {
+    /* Indicadores más compactos */
+    padding-top: 0.5rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* ===== SECCIÓN SKILLS ===== */
+  #skills {
+    /* Permitir expansión vertical */
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #skills .absolute.top-4.sm\:top-8 {
+    /* Título más cerca del top */
+    top: 1rem !important;
+  }
+
+  #skills h2 {
+    /* Título más pequeño */
+    font-size: 1.5rem !important;
+  }
+
+  /* Corregir selector con caracteres especiales - usar escape para % */
+  #skills .absolute[class*="bottom-[8%]"] {
+    /* Barra de progreso reposicionada */
+    bottom: 2rem !important;
+    position: relative !important;
+    margin-top: 2rem !important;
+  }
+
+  #skills .absolute.inset-0.flex.justify-center.items-center {
+    /* Superficie lunar con más espacio */
+    position: relative !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* ===== SECCIÓN CONTACT ===== */
+  #contact {
+    /* Más espacio vertical */
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  #contact .absolute.z-1 {
+    /* Reposicionar título de contacto */
+    position: relative !important;
+    display: block !important;
+    margin: 0 auto 2rem auto !important;
+    max-width: 300px !important;
+  }
+
+  /* Rocket landing más compacto */
+  #contact [class*="rocket"] {
+    transform: scale(0.8) !important;
+  }
+
+  /* Personaje más compacto */
+  #contact [class*="character"] {
+    transform: scale(0.9) !important;
+  }
+}
+
+/* Media query para pantallas extremadamente cortas (menos de 600px de altura) */
+@media (max-height: 600px) {
+  
+  /* Aún más compacto para pantallas muy pequeñas */
+  section[id="technologies"],
+  section[id="projects"], 
+  section[id="skills"],
+  section[id="contact"] {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Títulos aún más pequeños */
+  #technologies h2,
+  #projects h2,
+  #skills h2 {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Márgenes más pequeños */
+  #technologies .relative.z-30.mb-8,
+  #projects .text-center.mb-6,
+  #skills .absolute.top-4 {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Elementos de contact más pequeños */
+  #contact [class*="rocket"] {
+    transform: scale(0.7) !important;
+  }
+
+  #contact [class*="character"] {
+    transform: scale(0.8) !important;
+  }
+}
+
+/* Media query para pantallas en landscape mode con poca altura */
+@media (max-height: 500px) and (orientation: landscape) {
+  
+  /* Optimización especial para landscape */
+  section[id="technologies"],
+  section[id="projects"], 
+  section[id="skills"],
+  section[id="contact"] {
+    min-height: 100vh !important;
+    padding: 0.5rem !important;
+  }
+
+  /* Layout horizontal cuando sea posible */
+  #skills .absolute.top-4,
+  #skills .absolute[class*="bottom-[8%]"] {
+    position: relative !important;
+    display: inline-block !important;
+    width: 48% !important;
+    vertical-align: top !important;
+  }
+
+  /* Títulos muy compactos */
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Utilidades adicionales para mejorar la experiencia en pantallas cortas    */
+/* -------------------------------------------------------------------------- */
+
+/* Scroll suave para navegación entre secciones */
+@media (max-height: 700px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Asegurar que el contenido no se corte */
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Optimizar z-index para evitar solapamientos */
+  section[id] {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Navbar fijo optimizado */
+  nav {
+    position: fixed !important;
+    top: 0 !important;
+    z-index: 100 !important;
+    backdrop-filter: blur(10px) !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Compensar por navbar fijo */
+  main {
+    padding-top: 80px !important;
+  }
+}

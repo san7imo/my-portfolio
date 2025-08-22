@@ -80,8 +80,8 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
         onClick={handleClick}
       >
         {/* Área clickeable expandida */}
-        <div className="absolute inset-0 w-32 h-32 -translate-x-4 -translate-y-4 cursor-pointer"
-             style={{ minWidth: '120px', minHeight: '120px' }}></div>
+        <div className="absolute inset-0 w-24 sm:w-32 h-24 sm:h-32 -translate-x-4 -translate-y-4 cursor-pointer"
+             style={{ minWidth: '80px', minHeight: '80px' }}></div>
 
         {/* Glow effect sutil */}
         <div className={`absolute inset-0 rounded-full transition-all duration-500 ${
@@ -93,7 +93,7 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
         }`}></div>
 
         {/* Sprite container */}
-        <div className={`relative w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 transition-all duration-300 ${
+        <div className={`relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 transition-all duration-300 ${
           isDiscovered ? 'opacity-100' : 'opacity-20'
         } ${isHovered ? 'animate-pulse' : ''}`}>
           <img 
@@ -153,22 +153,22 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
       {/* NUEVO MODAL REDISEÑADO - Estilo Pixel Art/Retro */}
       {showModal && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 z-[99999] flex items-center justify-center p-4 animate-fade-in"
           onClick={handleCloseModal}
         >
           {/* Backdrop sutil - solo blur ligero */}
-          <div className="absolute inset-0 backdrop-blur-md bg-black/10"></div>
+          <div className="fixed inset-0 backdrop-blur-md bg-black/10 z-[99998]"></div>
           
           {/* Modal flotante con estilo pixel art */}
           <div 
-            className="relative transform transition-all duration-500 ease-out scale-100 animate-modal-appear"
+            className="relative transform transition-all duration-500 ease-out scale-100 animate-modal-appear z-[99999]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Glow del modal */}
             <div className="absolute inset-0 bg-cyan-400/20 blur-2xl scale-110 rounded-3xl animate-pulse"></div>
             
             {/* Contenedor principal del modal */}
-            <div className="relative bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 rounded-2xl border-4 border-cyan-400/50 shadow-2xl max-w-lg w-full overflow-hidden">
+            <div className="relative bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 rounded-xl sm:rounded-2xl border-2 sm:border-4 border-cyan-400/50 shadow-2xl w-[90vw] sm:w-[95vw] md:w-[85vw] max-w-lg overflow-hidden">
               
               {/* Patrón de fondo pixelado */}
               <div className="absolute inset-0 opacity-5">
@@ -182,24 +182,24 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
               </div>
 
               {/* Header con diseño retro */}
-              <div className="relative bg-gradient-to-r from-cyan-600/20 to-blue-600/20 p-6 border-b-4 border-cyan-400/30">
+              <div className="relative bg-gradient-to-r from-cyan-600/20 to-blue-600/20 p-3 sm:p-4 md:p-6 border-b-2 sm:border-b-4 border-cyan-400/30">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 sm:gap-4">
                     {/* Icono grande con efecto pixel */}
                     <div className="relative">
                       <div className="absolute inset-0 bg-cyan-400/30 blur-xl rounded-full animate-pulse"></div>
-                      <div className="relative text-5xl filter drop-shadow-lg" style={{ imageRendering: 'pixelated' }}>
+                      <div className="relative text-3xl sm:text-4xl md:text-5xl filter drop-shadow-lg" style={{ imageRendering: 'pixelated' }}>
                         {skill.emoji}
                       </div>
                     </div>
                     
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-1 tracking-wide pixel-text">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 tracking-wide pixel-text">
                         {skill.title}
                       </h3>
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                        <p className="text-sm text-cyan-300 font-medium">SOFT SKILL</p>
+                        <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                        <p className="text-xs sm:text-sm text-cyan-300 font-medium">SOFT SKILL</p>
                       </div>
                     </div>
                   </div>
@@ -207,7 +207,7 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
                   {/* Botón cerrar estilo retro */}
                   <button
                     onClick={handleCloseModal}
-                    className="w-12 h-12 bg-red-600/20 hover:bg-red-600/40 border-2 border-red-400/50 rounded-lg transition-all duration-200 flex items-center justify-center text-red-300 hover:text-white font-bold text-xl hover:scale-110"
+                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-red-600/20 hover:bg-red-600/40 border border-red-400/50 sm:border-2 rounded-lg transition-all duration-200 flex items-center justify-center text-red-300 hover:text-white font-bold text-lg sm:text-xl hover:scale-110"
                   >
                     ✕
                   </button>
@@ -218,17 +218,17 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
               </div>
 
               {/* Contenido principal */}
-              <div className="relative p-6 space-y-6 max-h-80 overflow-y-auto custom-scrollbar">
+              <div className="relative p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 max-h-[50vh] sm:max-h-[60vh] md:max-h-[70vh] overflow-y-auto custom-scrollbar">
                 
                 {/* Sección descripción con estilo terminal */}
                 <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <h4 className="text-cyan-400 font-bold text-lg pixel-text">DESCRIPCIÓN</h4>
+                  <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                    <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <h4 className="text-cyan-400 font-bold text-base sm:text-lg pixel-text">DESCRIPCIÓN</h4>
                     <div className="flex-1 h-0.5 bg-gradient-to-r from-cyan-400/50 to-transparent"></div>
                   </div>
-                  <div className="bg-slate-800/60 rounded-lg p-4 border-l-4 border-cyan-500">
-                    <p className="text-gray-200 leading-relaxed text-base">
+                  <div className="bg-slate-800/60 rounded-lg p-3 sm:p-4 border-l-2 sm:border-l-4 border-cyan-500">
+                    <p className="text-gray-200 leading-relaxed text-sm sm:text-base">
                       {skill.description}
                     </p>
                   </div>
@@ -264,10 +264,10 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
               </div>
 
               {/* Footer con botón estilo arcade */}
-              <div className="relative p-6 border-t-4 border-cyan-400/30 bg-gradient-to-r from-slate-800 to-slate-700">
+              <div className="relative p-3 sm:p-4 md:p-6 border-t-2 sm:border-t-4 border-cyan-400/30 bg-gradient-to-r from-slate-800 to-slate-700">
                 <button
                   onClick={handleCloseModal}
-                  className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25 border-2 border-cyan-400/50 pixel-text text-lg relative overflow-hidden group"
+                  className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-2 sm:py-3 md:py-4 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25 border sm:border-2 border-cyan-400/50 pixel-text text-base sm:text-lg relative overflow-hidden group"
                 >
                   {/* Efecto de brillo al hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
@@ -286,7 +286,7 @@ const SkillSprite: React.FC<SkillSpriteProps> = ({
       )}
 
       {/* Estilos CSS adicionales para el modal */}
-      <style jsx>{`
+      <style>{`
         .pixel-text {
           image-rendering: pixelated;
           font-family: 'Courier New', monospace;

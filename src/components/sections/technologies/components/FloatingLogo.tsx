@@ -156,7 +156,7 @@ const FloatingLogo: React.FC<FloatingLogoProps> = ({
           <img
             src={technology.logo}
             alt={technology.name}
-            className={`w-12 h-12 md:w-16 md:h-16 transition-all duration-500 ${getLogoStyle()}`}
+            className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 transition-all duration-500 ${getLogoStyle()}`}
             style={{
               filter: (isHighlighted || isHovered) && !isGrayscale
                 ? 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))' 

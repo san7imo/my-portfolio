@@ -26,16 +26,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-gray-900/95 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-purple-500/30">
-        <div className="p-6">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-gray-900/95 rounded-xl sm:rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto border border-purple-500/30">
+        <div className="p-3 sm:p-4 md:p-6">
           {/* Header del modal */}
-          <div className="flex justify-between items-start mb-6">
+          <div className="flex justify-between items-start mb-4 sm:mb-6">
             <div>
-              <h3 className="text-3xl font-bold text-white mb-2">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">
                 {project.title}
               </h3>
-              <p className="text-gray-400">{project.date}</p>
+              <p className="text-sm sm:text-base text-gray-400">{project.date}</p>
             </div>
             <button
               onClick={onClose}
@@ -50,14 +50,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             <img
               src={project.images[currentImageIndex]}
               alt={project.title}
-              className="w-full h-64 md:h-80 object-cover rounded-lg"
+              className="w-full h-48 sm:h-64 md:h-80 object-contain rounded-lg"
             />
             
             {project.images.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                  className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-1.5 sm:p-2 rounded-full hover:bg-black/70 transition-colors"
                 >
                   <ChevronLeft size={20} />
                 </button>

@@ -1,8 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 
+interface ResponsiveRocketConfig {
+  x: number; // Porcentaje 0-1
+  y: number; // Porcentaje 0-1
+  scale: number; // Factor de escala
+}
+
 interface RocketLandingProps {
   onLandingComplete: () => void;
   className?: string;
+  responsiveConfig: ResponsiveRocketConfig;
 }
 
 interface Particle {
@@ -30,6 +37,7 @@ interface RocketState {
 const RocketLanding: React.FC<RocketLandingProps> = ({
   onLandingComplete,
   className = "",
+  responsiveConfig,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
@@ -42,7 +50,7 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
     x: -150,
     y: -100,
     rotation: 25,
-    scale: 1.0,
+    scale: responsiveConfig.scale,
     phase: 'approaching',
     flames: [],
     particles: [],
@@ -63,6 +71,11 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
     img.src = "/assets/img/contact-section/cohete.png";
   }, []);
 
+  // Actualizar escala cuando cambie la configuración responsiva
+  useEffect(() => {
+    rocketState.current.scale = responsiveConfig.scale;
+  }, [responsiveConfig.scale]);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !imageLoaded) return;
@@ -73,9 +86,10 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       
+      // Usar configuración responsiva para el target de aterrizaje
       rocketState.current.landingTarget = {
-        x: canvas.width * 0.79,
-        y: canvas.height * 0.48,
+        x: canvas.width * responsiveConfig.x,
+        y: canvas.height * responsiveConfig.y,
       };
     };
 
@@ -86,35 +100,36 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
       setIsLanding(true);
     }, 500);
 
+    // Crear partículas ajustadas a la escala
     const createFlameParticle = (): Particle => ({
-      x: rocketState.current.x + (Math.random() - 0.5) * 15,
-      y: rocketState.current.y + 135 * rocketState.current.scale, // Más abajo para cohete grande
+      x: rocketState.current.x + (Math.random() - 0.5) * 15 * responsiveConfig.scale,
+      y: rocketState.current.y + 135 * rocketState.current.scale,
       vx: (Math.random() - 0.5) * 1.5,
       vy: Math.random() * 2 + 1.5,
       life: 1,
-      size: Math.random() * 15 + 8,
+      size: (Math.random() * 15 + 8) * responsiveConfig.scale,
       color: Math.random() > 0.6 ? '#FF4500' : Math.random() > 0.3 ? '#FF6B35' : '#FFD700',
       type: 'flame'
     });
 
     const createExhaustParticle = (): Particle => ({
-      x: rocketState.current.x + (Math.random() - 0.5) * 12,
-      y: rocketState.current.y + 150 * rocketState.current.scale, // Ligeramente más abajo que las llamas
+      x: rocketState.current.x + (Math.random() - 0.5) * 12 * responsiveConfig.scale,
+      y: rocketState.current.y + 150 * rocketState.current.scale,
       vx: (Math.random() - 0.5) * 2,
       vy: Math.random() * 3 + 2,
       life: 1,
-      size: Math.random() * 10 + 6,
+      size: (Math.random() * 10 + 6) * responsiveConfig.scale,
       color: Math.random() > 0.5 ? '#87CEEB' : '#B0E0E6',
       type: 'exhaust'
     });
 
     const createSmokeParticle = (): Particle => ({
-      x: rocketState.current.x + (Math.random() - 0.5) * 18,
-      y: rocketState.current.y + 155 * rocketState.current.scale, // Más abajo, sale después del fuego
+      x: rocketState.current.x + (Math.random() - 0.5) * 18 * responsiveConfig.scale,
+      y: rocketState.current.y + 155 * rocketState.current.scale,
       vx: (Math.random() - 0.5) * 1,
       vy: Math.random() * 1 + 0.8,
       life: 1,
-      size: Math.random() * 16 + 12,
+      size: (Math.random() * 16 + 12) * responsiveConfig.scale,
       color: `rgba(${120 + Math.random() * 30}, ${120 + Math.random() * 30}, ${120 + Math.random() * 30}, 0.7)`,
       type: 'smoke'
     });
@@ -170,21 +185,19 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
             flame.x, flame.y, flame.size
           );
           gradient.addColorStop(0, flame.color);
-          gradient.addColorStop(0.2, flame.color + 'DD'); // Núcleo más intenso
-          gradient.addColorStop(0.5, flame.color + '88'); // Transición suave
+          gradient.addColorStop(0.2, flame.color + 'DD');
+          gradient.addColorStop(0.5, flame.color + '88');
           gradient.addColorStop(1, 'transparent');
           ctx.fillStyle = gradient;
           
-          // Forma más alargada para las llamas
           ctx.save();
-          ctx.scale(1.2, 2); // Más ancho y alto para mayor visibilidad
+          ctx.scale(1.2, 2);
           ctx.beginPath();
           ctx.arc(flame.x / 1.2, flame.y / 2, flame.size * 0.9, 0, Math.PI * 2);
           ctx.fill();
           ctx.restore();
           
         } else if (flame.type === 'exhaust') {
-          // Escape azul más definido
           const gradient = ctx.createRadialGradient(
             flame.x, flame.y, 0,
             flame.x, flame.y, flame.size
@@ -199,7 +212,6 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
           ctx.fill();
           
         } else if (flame.type === 'smoke') {
-          // Humo más difuso
           const gradient = ctx.createRadialGradient(
             flame.x, flame.y, 0,
             flame.x, flame.y, flame.size * 1.2
@@ -216,34 +228,29 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
         
         ctx.restore();
 
-        // Física mejorada por tipo de partícula
+        // Física de partículas
         flame.x += flame.vx;
         flame.y += flame.vy;
         
         if (flame.type === 'flame') {
-          // Las llamas se consumen rápido y tienen poca expansión
-          flame.life -= 0.035; // Vida un poco más larga para mayor visibilidad
-          flame.size *= 0.96;  // Se reducen más lentamente
+          flame.life -= 0.035;
+          flame.size *= 0.96;
           flame.vy += 0.05;
           flame.vx *= 0.96;
-          
         } else if (flame.type === 'exhaust') {
-          // El escape es más persistente pero controlado
           flame.life -= 0.025;
           flame.size *= 0.97;
           flame.vy += 0.08;
           flame.vx *= 0.98;
-          
         } else if (flame.type === 'smoke') {
-          // El humo se dispersa lentamente
           flame.life -= 0.015;
-          flame.size *= 0.998; // Crece ligeramente
-          flame.vy += 0.02;    // Muy poca gravedad
-          flame.vx *= 0.99;    // Menos resistencia
+          flame.size *= 0.998;
+          flame.vy += 0.02;
+          flame.vx *= 0.99;
         }
 
-        // Remover partículas muertas o que hayan bajado mucho
-        const maxDistance = 80; // Límite de distancia desde el cohete
+        // Remover partículas
+        const maxDistance = 80 * responsiveConfig.scale;
         const distanceFromRocket = Math.sqrt(
           (flame.x - rocketState.current.x) ** 2 + 
           (flame.y - rocketState.current.y) ** 2
@@ -254,19 +261,21 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
         }
       });
 
-      // Generar nuevas partículas con mayor frecuencia para mejor visibilidad
+      // Generar nuevas partículas ajustadas a la escala
       if (rocketState.current.phase === 'approaching' || rocketState.current.phase === 'landing') {
-        // Llamas principales (mayor frecuencia)
-        for (let i = 0; i < 5; i++) {
+        const particleCount = Math.floor(5 * responsiveConfig.scale);
+        
+        for (let i = 0; i < particleCount; i++) {
           rocketState.current.flames.push(createFlameParticle());
         }
-        // Escape azul (más frecuente)
+        
         if (Math.random() > 0.2) {
-          for (let i = 0; i < 3; i++) {
+          const exhaustCount = Math.floor(3 * responsiveConfig.scale);
+          for (let i = 0; i < exhaustCount; i++) {
             rocketState.current.flames.push(createExhaustParticle());
           }
         }
-        // Humo (más ocasional pero presente)
+        
         if (Math.random() > 0.3) {
           rocketState.current.flames.push(createSmokeParticle());
         }
@@ -337,7 +346,7 @@ const RocketLanding: React.FC<RocketLandingProps> = ({
       window.removeEventListener("resize", resizeCanvas);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [isLanding, onLandingComplete, imageLoaded]);
+  }, [isLanding, onLandingComplete, imageLoaded, responsiveConfig]);
 
   return (
     <canvas

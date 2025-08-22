@@ -45,39 +45,39 @@ const Timeline: React.FC<TimelineProps> = ({
     const planetConfigs = [
       {
         planetImage: "/assets/img/planets/riwi.png",
-        planetSize: 1.8,
+        planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 0.7,
-        position: { x: 15, y: 85 } // Bajado de y: 75 a y: 85
+        position: { x: 15, y: window.innerWidth < 640 ? 75 : 85 }
       },
       {
         planetImage: "/assets/img/planets/compraraiz.png",
-        planetSize: 1.8,
+        planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 1.2,
-        position: { x: 35, y: 35 } // Bajado de y: 25 a y: 35
+        position: { x: 35, y: window.innerWidth < 640 ? 25 : 35 }
       },
       {
         planetImage: "/assets/img/planets/todorifas.png",
-        planetSize: 3,
+        planetSize: window.innerWidth < 640 ? 1.2 : window.innerWidth < 1024 ? 2.1 : 3,
         depth: 0.6,
-        position: { x: 55, y: 80 } // Bajado de y: 70 a y: 80
+        position: { x: 55, y: window.innerWidth < 640 ? 70 : 80 }
       },
       {
         planetImage: "/assets/img/planets/camionya.png",
-        planetSize: 1.9,
+        planetSize: window.innerWidth < 640 ? 0.9 : window.innerWidth < 1024 ? 1.4 : 1.9,
         depth: 1.1,
-        position: { x: 70, y: 40 } // Bajado de y: 30 a y: 40
+        position: { x: 70, y: window.innerWidth < 640 ? 30 : 40 }
       },
       {
         planetImage: "/assets/img/planets/ciberseguridad.png",
-        planetSize: 1.8,
+        planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 0.5,
-        position: { x: 85, y: 75 } // Bajado de y: 65 a y: 75
+        position: { x: 85, y: window.innerWidth < 640 ? 65 : 75 }
       },
       {
         planetImage: "/assets/img/planets/filavirtual.png",
-        planetSize: 1.8,
+        planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
         depth: 1.0,
-        position: { x: 95, y: 50 } // Bajado de y: 40 a y: 50
+        position: { x: 95, y: window.innerWidth < 640 ? 40 : 50 }
       }
     ];
 
@@ -203,7 +203,7 @@ const Timeline: React.FC<TimelineProps> = ({
   const rocketPosition = getRocketPosition(activeProject);
 
   return (
-    <div className="relative w-full h-[450px] overflow-visible px-4 py-8">
+    <div className="relative w-full h-[350px] sm:h-[375px] md:h-[450px] overflow-visible px-2 sm:px-4 py-4 sm:py-8">
       {/* SVG para las trayectorias dinámicas */}
       <svg 
         className="absolute inset-0 w-full h-full" 
@@ -355,9 +355,9 @@ const Timeline: React.FC<TimelineProps> = ({
               )}
             </button>
             
-            {/* Solo fecha del planeta */}
+            {/* Solo fecha del planeta - oculta en móviles */}
             <div 
-              className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-3 text-center transition-all duration-500 ${
+              className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 sm:mt-3 text-center transition-all duration-500 hidden sm:block ${
                 isActive ? 'opacity-100 scale-110' : 'opacity-70 hover:opacity-90'
               }`}
             >
@@ -368,7 +368,7 @@ const Timeline: React.FC<TimelineProps> = ({
                     : 'text-gray-400'
                 }`}
                 style={{ 
-                  fontSize: `${0.8 + (planet.depth * 0.2)}rem`
+                  fontSize: `${0.7 + (planet.depth * 0.2)}rem`
                 }}
               >
                 {formatDate(planet.date)}
@@ -395,7 +395,9 @@ const Timeline: React.FC<TimelineProps> = ({
             src="/assets/img/cohetemano.png"
             alt="Cohete viajero"
             className={`object-contain transition-all duration-300 ${
-              rocketHasStarted ? 'w-16 h-16' : 'w-20 h-20'
+              rocketHasStarted 
+                ? 'w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16' 
+                : 'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20'
             }`}
             style={{
               filter: `drop-shadow(0 0 ${15 * rocketPosition.scale}px rgba(251, 146, 60, 1)) drop-shadow(0 0 ${30 * rocketPosition.scale}px rgba(168, 85, 247, 0.8))`,
@@ -441,8 +443,8 @@ const Timeline: React.FC<TimelineProps> = ({
           
           {/* Indicador de "Click para empezar" cuando está en reposo */}
           {!rocketHasStarted && (
-            <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center">
-              <p className="text-orange-300 text-sm font-medium animate-pulse whitespace-nowrap">
+            <div className="absolute top-[120%] left-1/2 transform -translate-x-1/2 text-center">
+              <p className="text-orange-300 text-[10px] sm:text-sm font-medium animate-pulse whitespace-nowrap">
                 ¡Haz clic en un planeta!
               </p>
             </div>
