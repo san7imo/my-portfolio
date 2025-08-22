@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 /* Tailwind v4 Configuration                                                 */
 /* -------------------------------------------------------------------------- */
-@theme {
+:root {
   --animate-fadeInUp: fadeInUp 0.3s ease-out forwards;
   --animate-twinkle: twinkle 2s ease-in-out infinite;
   --animate-float: float 3s ease-in-out infinite;
@@ -20,6 +20,10 @@
   --color-galaxy-purple: #8b5cf6;
   --color-galaxy-pink: #ec4899;
   --color-galaxy-blue: #3b82f6;
+  
+  /* Variables adicionales para altura real del viewport */
+  --real-vh: 1vh;
+  --navbar-height: 80px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -259,43 +263,7 @@
   }
 }
 
-/* Agregar estas animaciones al archivo CSS global o a tailwind.config.js */
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  25% {
-    transform: translateY(-10px) translateX(5px);
-  }
-  50% {
-    transform: translateY(-5px) translateX(-3px);
-  }
-  75% {
-    transform: translateY(-8px) translateX(2px);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(56, 178, 172, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(56, 178, 172, 0.6);
-  }
-}
-
+/* Animaciones adicionales */
 @keyframes orbit {
   0% {
     transform: translateX(100vw) translateY(70vh);
@@ -327,19 +295,6 @@
     opacity: 0.6;
     transform: scale(1);
   }
-}
-
-/* Utilidades de Tailwind personalizadas */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-fade-in {
-  animation: fade-in 1s ease-out forwards;
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 2s ease-in-out infinite;
 }
 
 .animate-orbit {
@@ -386,28 +341,6 @@
   }
 }
 
-/* Animaciones para la sección de contacto */
-
-/* Animación de flotación para partículas */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  25% {
-    transform: translateY(-10px) translateX(5px);
-  }
-  50% {
-    transform: translateY(-5px) translateX(-5px);
-  }
-  75% {
-    transform: translateY(-15px) translateX(3px);
-  }
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
 /* Pulso sutil para iconos sociales */
 @keyframes pulse-subtle {
   0%, 100% {
@@ -439,202 +372,235 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* Responsive Height Management - Pantallas con poca altura                  */
+/* CORECCIÓN: Responsive Height Management - Pantallas con poca altura       */
 /* -------------------------------------------------------------------------- */
 
 /* Media query para detectar pantallas con altura menor a 700px */
 @media (max-height: 700px) {
   
-  /* ===== SECCIONES GENERALES ===== */
-  /* Cambiar todas las secciones de h-screen a min-h-screen para permitir expansión */
-  section[id="technologies"],
-  section[id="projects"], 
-  section[id="skills"],
+  /* ===== CORRECCIÓN PRINCIPAL: Cambiar secciones a altura automática ===== */
+  section[id="technologies"] {
+    /* Technologies: Sin padding vertical para eliminar marco */
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 0 !important; /* Eliminar todo el padding de la sección */
+  }
+  
+  section[id="projects"] {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+  
+  section[id="skills"] {
+    height: auto !important;
+    min-height: 130vh !important; /* Aumentar altura para skills */
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+  
   section[id="contact"] {
     height: auto !important;
-    min-height: 100vh !important;
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
+    min-height: 140vh !important; /* Aumentar altura para contact */
+    padding-top: 4rem !important;
+    padding-bottom: 6rem !important;
   }
 
-  /* ===== SECCIÓN TECHNOLOGIES ===== */
+  /* ===== SECCIÓN TECHNOLOGIES - Eliminar TODO el padding ===== */
   #technologies {
-    /* Permitir scroll vertical */
-    overflow-y: auto !important;
+    /* Asegurar que ocupe todo el ancho y no tenga padding extra */
+    margin: 0 !important;
+    padding: 0 !important; /* Eliminar TODOS los paddings */
+    width: 100vw !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
   }
 
+  /* Corregir contenedor principal de technologies - SIN padding vertical */
   #technologies .relative.z-20 {
-    /* Contenedor principal más compacto */
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0 !important; /* Eliminar padding superior */
+    padding-bottom: 0 !important; /* Eliminar padding inferior */
+    padding-left: 1rem !important; /* Solo padding lateral mínimo */
+    padding-right: 1rem !important; /* Solo padding lateral mínimo */
+    width: 100% !important;
+    margin: 0 !important;
   }
 
+  /* Título de technologies más compacto pero visible */
   #technologies h2 {
-    /* Título más pequeño */
     font-size: 2.5rem !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 2rem !important;
+    line-height: 1.2 !important;
   }
 
+  /* Filtros de categorías más compactos */
   #technologies .relative.z-30.mb-8 {
-    /* Filtro de categorías más compacto */
-    margin-bottom: 1.5rem !important;
-  }
-
-  /* ===== SECCIÓN PROJECTS ===== */
-  #projects .relative.z-10.h-full {
-    /* Contenedor principal expandible */
-    height: auto !important;
-    min-height: 100vh !important;
-  }
-
-  #projects .text-center.mb-6 {
-    /* Título más compacto */
-    margin-bottom: 1.5rem !important;
-  }
-
-  #projects h2 {
-    /* Título más pequeño */
-    font-size: 2rem !important;
-  }
-
-  #projects .flex-shrink-0.mb-2.mt-4 {
-    /* Timeline más compacta */
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
-  }
-
-  #projects .flex-1.flex.flex-col {
-    /* Contenido principal con más espacio */
-    min-height: auto !important;
-  }
-
-  #projects .text-center.pt-1.pb-2 {
-    /* Indicadores más compactos */
-    padding-top: 0.5rem !important;
-    padding-bottom: 1rem !important;
-  }
-
-  /* ===== SECCIÓN SKILLS ===== */
-  #skills {
-    /* Permitir expansión vertical */
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  #skills .absolute.top-4.sm\:top-8 {
-    /* Título más cerca del top */
-    top: 1rem !important;
-  }
-
-  #skills h2 {
-    /* Título más pequeño */
-    font-size: 1.5rem !important;
-  }
-
-  /* Corregir selector con caracteres especiales - usar escape para % */
-  #skills .absolute[class*="bottom-[8%]"] {
-    /* Barra de progreso reposicionada */
-    bottom: 2rem !important;
-    position: relative !important;
-    margin-top: 2rem !important;
-  }
-
-  #skills .absolute.inset-0.flex.justify-center.items-center {
-    /* Superficie lunar con más espacio */
-    position: relative !important;
-    margin-top: 2rem !important;
     margin-bottom: 2rem !important;
   }
 
-  /* ===== SECCIÓN CONTACT ===== */
-  #contact {
-    /* Más espacio vertical */
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
+  /* ===== SECCIÓN PROJECTS - Permitir crecimiento ===== */
+  #projects .relative.z-10.h-full {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding-bottom: 2rem !important;
   }
 
-  #contact .absolute.z-1 {
-    /* Reposicionar título de contacto */
-    position: relative !important;
+  #projects .text-center.mb-6 {
+    margin-bottom: 2rem !important;
+  }
+
+  #projects h2 {
+    font-size: 2.25rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* ===== SECCIÓN SKILLS - Reestablecer distribución original ===== */
+  #skills {
+    /* Mantener la estructura original, solo ajustar alturas */
     display: block !important;
-    margin: 0 auto 2rem auto !important;
-    max-width: 300px !important;
+    position: relative !important;
+    height: auto !important;
+    min-height: 100vh !important;
   }
 
-  /* Rocket landing más compacto */
-  #contact [class*="rocket"] {
-    transform: scale(0.8) !important;
+  /* IMPORTANTE: Restaurar posicionamiento absoluto para mantener diseño original */
+  #skills .absolute {
+    /* NO cambiar a relative, mantener absoluto para conservar el diseño */
+    position: absolute !important;
   }
 
-  /* Personaje más compacto */
-  #contact [class*="character"] {
-    transform: scale(0.9) !important;
+  /* Ajustar solo el título para pantallas cortas */
+  #skills .absolute.top-4,
+  #skills .absolute.top-8 {
+    top: 2rem !important;
+  }
+
+  /* Ajustar tamaño del título de skills */
+  #skills h2 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Mantener la barra de progreso en su posición original */
+  #skills .absolute[style*="bottom:"] {
+    /* Mantener posicionamiento original pero ajustar un poco */
+    bottom: 6% !important;
+  }
+
+  /* ===== SECCIÓN CONTACT - Permitir más altura ===== */
+  #contact {
+    /* Aumentar altura mínima para pantallas cortas */
+    min-height: 120vh !important;
+    height: auto !important;
+    padding-top: 4rem !important;
+    padding-bottom: 6rem !important;
+  }
+
+  /* Asegurar que el título de contacto esté visible */
+  #contact .absolute.z-1 {
+    /* Mantener posicionamiento pero asegurar visibilidad */
+    top: 2rem !important;
+  }
+
+  /* Dar más espacio al contenido de contact */
+  #contact .relative {
+    margin-top: 4rem !important;
+    margin-bottom: 4rem !important;
   }
 }
 
 /* Media query para pantallas extremadamente cortas (menos de 600px de altura) */
 @media (max-height: 600px) {
   
-  /* Aún más compacto para pantallas muy pequeñas */
-  section[id="technologies"],
-  section[id="projects"], 
-  section[id="skills"],
+  /* Ajustes para pantallas muy pequeñas */
+  section[id="technologies"] {
+    padding: 0 !important; /* Sin padding para technologies */
+    min-height: 100vh !important;
+  }
+  
+  section[id="projects"] {
+    padding-top: 2rem !important;
+    padding-bottom: 3rem !important;
+    min-height: 120vh !important;
+  }
+  
+  section[id="skills"] {
+    padding-top: 2rem !important;
+    padding-bottom: 3rem !important;
+    /* Aumentar más la altura para skills en pantallas muy cortas */
+    min-height: 150vh !important;
+  }
+  
   section[id="contact"] {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 8rem !important;
+    /* Aumentar más la altura para contact en pantallas muy cortas */
+    min-height: 160vh !important;
   }
 
-  /* Títulos aún más pequeños */
+  /* Títulos más compactos pero legibles */
   #technologies h2,
-  #projects h2,
+  #projects h2 {
+    font-size: 2rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
   #skills h2 {
-    font-size: 1.8rem !important;
-    margin-bottom: 0.5rem !important;
+    font-size: 1.75rem !important;
   }
 
-  /* Márgenes más pequeños */
-  #technologies .relative.z-30.mb-8,
-  #projects .text-center.mb-6,
-  #skills .absolute.top-4 {
-    margin-bottom: 1rem !important;
+  /* Contact necesita aún más espacio en pantallas muy cortas */
+  #contact {
+    min-height: 180vh !important;
+    padding-bottom: 10rem !important;
   }
-
-  /* Elementos de contact más pequeños */
-  #contact [class*="rocket"] {
-    transform: scale(0.7) !important;
-  }
-
-  #contact [class*="character"] {
-    transform: scale(0.8) !important;
+  
+  /* Skills también necesita más espacio en pantallas muy cortas */
+  #skills {
+    min-height: 170vh !important;
   }
 }
 
 /* Media query para pantallas en landscape mode con poca altura */
 @media (max-height: 500px) and (orientation: landscape) {
   
-  /* Optimización especial para landscape */
-  section[id="technologies"],
-  section[id="projects"], 
-  section[id="skills"],
+  /* Para landscape, dar aún más altura porque el contenido se ve más comprimido */
+  section[id="technologies"] {
+    min-height: 120vh !important;
+    padding: 0 !important; /* Sin padding para technologies */
+  }
+  
+  section[id="projects"] {
+    min-height: 150vh !important;
+    padding: 1rem !important;
+  }
+  
+  section[id="skills"] {
+    min-height: 200vh !important; /* Mucho más alto para skills en landscape */
+    padding: 1rem !important;
+  }
+  
   section[id="contact"] {
-    min-height: 100vh !important;
-    padding: 0.5rem !important;
+    min-height: 220vh !important; /* Mucho más alto para contact en landscape */
+    padding: 1rem !important;
   }
 
-  /* Layout horizontal cuando sea posible */
-  #skills .absolute.top-4,
-  #skills .absolute[class*="bottom-[8%]"] {
-    position: relative !important;
-    display: inline-block !important;
-    width: 48% !important;
-    vertical-align: top !important;
-  }
-
-  /* Títulos muy compactos */
+  /* Títulos muy compactos para landscape */
   h2 {
     font-size: 1.5rem !important;
-    line-height: 1.2 !important;
-    margin-bottom: 0.5rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Contact necesita espacio extra en landscape */
+  #contact {
+    min-height: 220vh !important;
+  }
+  
+  /* Skills necesita espacio extra en landscape */  
+  #skills {
+    min-height: 200vh !important;
   }
 }
 
@@ -642,13 +608,13 @@
 /* Utilidades adicionales para mejorar la experiencia en pantallas cortas    */
 /* -------------------------------------------------------------------------- */
 
-/* Scroll suave para navegación entre secciones */
+/* Asegurar scroll suave */
 @media (max-height: 700px) {
   html {
     scroll-behavior: smooth;
   }
 
-  /* Asegurar que el contenido no se corte */
+  /* Permitir scroll vertical sin problemas */
   body {
     overflow-x: hidden;
     overflow-y: auto;
@@ -660,7 +626,7 @@
     z-index: 1;
   }
 
-  /* Navbar fijo optimizado */
+  /* Si tienes navbar fijo, compensar adecuadamente */
   nav {
     position: fixed !important;
     top: 0 !important;
@@ -669,8 +635,15 @@
     background: rgba(0, 0, 0, 0.8) !important;
   }
 
-  /* Compensar por navbar fijo */
+  /* Compensar por navbar fijo si existe */
   main {
     padding-top: 80px !important;
+  }
+
+  /* Asegurar que las secciones no tengan problemas de contenedor */
+  section[id] {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100vw !important;
   }
 }
