@@ -126,6 +126,25 @@ export default function Contact() {
         responsiveConfig={positions.socialIcons}
       />
 
+          {/* Botón "Acerca de mí" en la parte inferior */}
+      <a 
+        href="/about"
+        className={`
+          absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40
+          bg-transparent
+          hover:from-cyan-400 hover:to-blue-500
+          text-white font-bold inline-block
+          ${breakpoints.mobile ? 'py-3 px-6 text-sm' : 'py-4 px-8 text-base'}
+          rounded-xl shadow-lg hover:shadow-xl
+          transition-all duration-300 ease-in-out
+          transform hover:scale-105 hover:-translate-y-1
+          border-2 border-white/20 hover:border-white/40
+          backdrop-blur-sm
+        `}
+      >
+        ✨ Acerca de san7imo
+      </a>
+
       {/* Contenido por defecto mientras esperamos */}
       {!showRocket && (
         <div className="relative z-10 text-center">
