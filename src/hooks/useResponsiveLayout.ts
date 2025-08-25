@@ -68,6 +68,7 @@ const useResponsiveLayout = () => {
     title: {
       top: '60px',
       maxWidth: '200px',
+  
       left: '50%',
       transform: 'translateX(-50%)'
     },
@@ -117,8 +118,8 @@ const useResponsiveLayout = () => {
         newPositions = {
           rocketLanding: { 
             x: 0.8, // Centro horizontal
-            y: 0.795, // Un poco más abajo del centro
-            scale: 0.6 // Más pequeño
+            y: 0.8, // Un poco más abajo del centro
+            scale: 0.5 // Más pequeño
           },
           title: {
             top: '230px',

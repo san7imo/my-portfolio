@@ -11,6 +11,16 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
   const [pulse, setPulse] = useState(false);
   const [vibrate, setVibrate] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  
+  const handleClick = () => {
+    const frames = Array.from({ length: 8 }, (_, i) => `/assets/avatar-frames/frame${i + 1}.webp`);
+    frames.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    onClick(); // abrir modal
+  };
 
   // Efecto de vibración y mensaje cada cierto tiempo
   useEffect(() => {
@@ -101,7 +111,7 @@ export default function FloatingChatButton({ onClick, hasNewMessage = false }: F
       </div>
 
       <button
-        onClick={onClick}
+        onClick={handleClick}
         className={`relative group transition-all duration-300 transform hover:scale-110 ${
           pulse ? 'animate-pulse' : ''
         } ${

@@ -635,10 +635,6 @@
     background: rgba(0, 0, 0, 0.8) !important;
   }
 
-  /* Compensar por navbar fijo si existe */
-  main {
-    padding-top: 80px !important;
-  }
 
   /* Asegurar que las secciones no tengan problemas de contenedor */
   section[id] {

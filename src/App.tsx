@@ -1,5 +1,5 @@
 // src/App.tsx
-import { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Hero from "./components/sections/hero/Hero";
 import Navbar from "./components/layout/Navbar";
@@ -8,8 +8,10 @@ import Projects from "./components/sections/projects/Projects";
 import Skills from "./components/sections/skills/Skills";
 import Contact from "./components/sections/contact/Contact";
 import About from "./components/about-me/AboutMe";
-import ChatbotModal from "./components/sections/chatbot/ChatbotModal";
 import FloatingChatButton from "./components/sections/chatbot/FloatingChatButton";
+
+// ✅ Lazy load del ChatbotModal
+const ChatbotModal = React.lazy(() => import("./components/sections/chatbot/ChatbotModal"));
 
 function App() {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -26,7 +28,7 @@ function App() {
 
   const minimizeChat = () => {
     setIsChatOpen(false);
-    // Opcionalmente, puedes mostrar una notificación de que el chat está minimizado
+    // Aquí podrías mostrar notificación de minimizado si quieres
   };
 
   return (
@@ -53,22 +55,26 @@ function App() {
             }
           />
 
-          {/* Página profesional de "Acerca de mí" */}
+          {/* Página de "Acerca de mí" */}
           <Route path="/about" element={<About />} />
         </Routes>
 
-        {/* Botón flotante del chatbot - visible en todas las páginas */}
+        {/* Botón flotante del chatbot */}
         <FloatingChatButton 
           onClick={openChat}
           hasNewMessage={hasNewMessage}
         />
 
-        {/* Modal del chatbot */}
-        <ChatbotModal
-          isOpen={isChatOpen}
-          onClose={closeChat}
-          onMinimize={minimizeChat}
-        />
+        {/* Modal del chatbot con Lazy Load */}
+        <Suspense fallback={<div className="text-white p-4">Cargando asistente...</div>}>
+          {isChatOpen && (
+            <ChatbotModal
+              isOpen={isChatOpen}
+              onClose={closeChat}
+              onMinimize={minimizeChat}
+            />
+          )}
+        </Suspense>
 
         {/* Footer opcional */}
         {/* <footer className="bg-gray-900 text-gray-500 text-center p-4">

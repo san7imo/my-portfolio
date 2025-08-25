@@ -8,7 +8,7 @@ export const projectsData: Project[] = [
     date: "Agosto 2024",
     technologies: ["PHP", "Laravel", "Symfony", "Java", "Spring Boot", "HTML", "CSS", "JavaScript", "FastAPI", "React", "Angular", "Python","MySql" ,"PostgreSQL", "MongoDB"],
     images: ["/assets/img/project-section/riwiproyects.webp", "/assets/img/project-section/riwiproyects1.webp", "/assets/img/project-section/riwiproyects2.webp", "/assets/img/project-section/riwiproyects3.webp", "/assets/img/project-section/riwiproyects4.webp"],
-    liveUrl: "https://github.com/orgs/Riwi-Proyects/repositories",
+    liveUrl: "https://github.com/Riwi-Proyects",
     githubUrl: "https://github.com/orgs/Riwi-Proyects/repositories"
   },
   {
@@ -28,7 +28,7 @@ export const projectsData: Project[] = [
     date: "Diciembre 2024",
     technologies: ["Laravel", "Livewire", "MySQL", "Bootstrap"],
     images: ["/assets/img/project-section/todorifas.webp", "/assets/img/project-section/todorifas2.webp", "/assets/img/project-section/todorifas4.webp", "/assets/img/project-section/todorifas21.webp"],
-    liveUrl: "",
+    liveUrl: "https://github.com/Crudzaso/todo_rifas",
     githubUrl: "https://github.com/Crudzaso/todo_rifas"
   },
   {
@@ -39,7 +39,7 @@ export const projectsData: Project[] = [
     technologies: ["Node.js", "Express", "MongoDB", "Bootstrap"],
     images: ["/assets/img/project-section/camionya.webp", "/assets/img/project-section/camionya1.webp"],
     liveUrl: "https://camionya.co/",
-    githubUrl: ""
+    githubUrl: "https://camionya.co/"
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ export const projectsData: Project[] = [
     date: "Mayo 2025",
     technologies: ["FastAPI", "Python", "Redis", "React", "TailwindCSS", "SQLite", "Pandas", "Matplotlib"],
     images: ["/assets/img/project-section/analisis.webp"],
-    liveUrl: "",
+    liveUrl: "https://github.com/san7ilo/reto-python-fastapi",
     githubUrl: "https://github.com/san7ilo/reto-python-fastapi"
   }
 ];
