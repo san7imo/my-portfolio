@@ -88,6 +88,20 @@ const Timeline: React.FC<TimelineProps> = ({
         depth: 1.0,
         position: { x: 95, y: window.innerWidth < 640 ? 40 : 50 },
         loading: lazy
+      },
+      {
+        planetImage: "/assets/img/planets/logichat.webp",
+        planetSize: window.innerWidth < 640 ? 1.15 : window.innerWidth < 1024 ? 1.9 : 2.8,
+        depth: 0.8,
+        position: { x: 74, y: window.innerWidth < 640 ? 78 : 92 },
+        loading: lazy
+      },
+      {
+        planetImage: "/assets/img/planets/dilorecords.webp",
+        planetSize: window.innerWidth < 640 ? 0.9 : window.innerWidth < 1024 ? 1.4 : 1.9,
+        depth: 0.9,
+        position: { x: 10, y: window.innerWidth < 640 ? 45 : 35 },
+        loading: lazy
       }
     ];
 
@@ -424,14 +438,14 @@ const Timeline: React.FC<TimelineProps> = ({
               transform: `translateY(-50%)`,
               transformOrigin: 'right center'
             }}>
-              {[...Array(3)].map((_, i) => (
+              {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
                   className="absolute rounded-full animate-ping"
                   style={{
                     width: `${(2 + rocketPosition.scale * 0.5)}px`,
                     height: `${(2 + rocketPosition.scale * 0.5)}px`,
-                    right: `${i * 6 * rocketPosition.scale}px`,
+                    right: `${i * 7 * rocketPosition.scale}px`,
                     top: `${(i - 1) * 2 * rocketPosition.scale}px`,
                     animationDelay: `${i * 0.2}s`,
                     animationDuration: '1s',

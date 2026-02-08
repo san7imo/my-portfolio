@@ -60,5 +60,31 @@ export const projectsData: Project[] = [
     images: ["/assets/img/project-section/analisis.webp"],
     liveUrl: "https://github.com/san7ilo/reto-python-fastapi",
     githubUrl: "https://github.com/san7ilo/reto-python-fastapi"
+  },
+  {
+    id: 7,
+    title: "LogicChat",
+    description: "Plataforma de chat con frontend en React 11.5 y backend en Node.js/TypeScript (Express, Sequelize y Socket.io) con integraciones de IA.",
+    date: "Octubre 2025",
+    technologies: ["React 11.5", "Node.js", "TypeScript", "Express", "Sequelize", "Socket.io", "OpenAI"],
+    images: ["/assets/img/project-section/logichat1.webp"],
+    liveUrl: "https://logichat.co/",
+    githubUrl: "https://logichat.co/"
+  },
+  {
+    id: 8,
+    title: "Dilo Records",
+    description: "Plataforma de gestión musical con sitio público, panel admin y portal de artistas. Gestiona artistas, lanzamientos, eventos y finanzas. Tecnologías principales: Laravel 12, Vue 3, Inertia y MySQL.",
+    date: "Enero 2026",
+    technologies: ["Laravel 12", "PHP 8.2", "Inertia.js", "Vue 3", "Tailwind CSS", "Jetstream", "Sanctum", "Spatie Permission", "ImageKit", "Vite", "MySQL"],
+    images: [
+      "/assets/img/project-section/dilorecords.webp",
+      "/assets/img/project-section/dilorecords2.webp",
+      "/assets/img/project-section/dilorecords3.webp",
+      "/assets/img/project-section/dilorecords4.webp",
+      "/assets/img/project-section/dilorecords5.webp"
+    ],
+  liveUrl: "https://dilorecords.com/",
+    githubUrl: "https://dilorecords.com/"
   }
 ];
