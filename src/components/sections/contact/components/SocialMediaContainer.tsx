@@ -31,21 +31,25 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
     {
       name: "LinkedIn",
       icon: Linkedin,
+      color: "#0A66C2",
       url: "https://linkedin.com/in/sam7imo",
     },
     {
       name: "GitHub",
       icon: Github,
+      color: "#E6EDF3",
       url: "https://github.com/san7imo",
     },
     {
       name: "Email",
       icon: Mail,
+      color: "#F59E0B",
       url: "mailto:san7imo@gmail.com",
     },
     {
       name: "WhatsApp",
       icon: MessageCircle,
+      color: "#25D366",
       url: "https://wa.me/+573116566530",
     }
   ];
@@ -66,35 +70,17 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
 
   return (
     <>
-      {/* Estilos CSS para el efecto LED */}
+      {/* Estilos CSS para brillo por marca */}
       <style>{`
-        @keyframes ledGlow {
-          0%, 100% {
-            filter: drop-shadow(0 0 8px #8b5cf6) drop-shadow(0 0 16px #3b82f6) drop-shadow(0 0 24px #8b5cf6);
-          }
-          50% {
-            filter: drop-shadow(0 0 12px #3b82f6) drop-shadow(0 0 24px #8b5cf6) drop-shadow(0 0 32px #3b82f6);
-          }
+        .social-icon {
+          color: #ffffff;
+          transition: transform 250ms ease, filter 250ms ease, color 250ms ease;
         }
-        
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.7;
-          }
-        }
-        
-        .led-icon {
-          color: rgb(255, 255, 255);
-          animation: ledGlow 2s ease-in-out infinite, pulse 3s ease-in-out infinite;
-        }
-        
-        .led-icon:hover {
-          color: #3b82f6;
-          animation: ledGlow 0.5s ease-in-out infinite, pulse 1s ease-in-out infinite;
-          transform: scale(1.3);
+
+        .social-link:hover .social-icon {
+          color: var(--icon-color);
+          filter: drop-shadow(0 0 6px var(--icon-color)) drop-shadow(0 0 14px var(--icon-color));
+          transform: scale(1.2);
         }
       `}</style>
       
@@ -130,26 +116,16 @@ const SocialIcons: React.FC<SocialIconsProps> = ({
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative block p-3 transition-all duration-300 bg-transparent bg-opacity-20 rounded-xl backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-30"
+                  className="social-link group relative block p-2 transition-all duration-300"
                   title={social.name}
                   aria-label={social.name}
+                  style={{ '--icon-color': social.color } as React.CSSProperties}
                 >
                   {/* Icono con efecto LED y tamaño responsivo */}
                   <IconComponent 
                     size={iconSize}
-                    className="led-icon transition-all duration-300"
+                    className="social-icon"
                   />
-                  
-                  {/* Efecto de brillo adicional en hover */}
-                  <div 
-                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300"
-                    style={{
-                      background: 'radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)',
-                      filter: 'blur(8px)',
-                      transform: 'scale(1.5)'
-                    }}
-                  >
-                  </div>
                 </a>
               </div>
             );

@@ -12,6 +12,7 @@ export default function Contact() {
   const [showSocialIcons, setShowSocialIcons] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const ufoRef = useRef<HTMLImageElement>(null);
   
   // Hook de responsividad
   const { positions, breakpoints } = useResponsiveLayout();
@@ -52,6 +53,45 @@ export default function Contact() {
     };
   }, [hasAnimated]);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    let rafId: number | null = null;
+    let latestX = 0;
+    let latestY = 0;
+
+    const updatePosition = () => {
+      if (!ufoRef.current) return;
+      ufoRef.current.style.setProperty('--ufo-x', `${latestX}px`);
+      ufoRef.current.style.setProperty('--ufo-y', `${latestY}px`);
+      rafId = null;
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const rect = section.getBoundingClientRect();
+      const rawX = event.clientX - rect.left;
+      const rawY = event.clientY - rect.top;
+      const padding = breakpoints.mobile ? 50 : 80;
+
+      latestX = Math.min(Math.max(rawX, padding), rect.width - padding);
+      latestY = Math.min(Math.max(rawY, padding), rect.height - padding);
+
+      if (rafId === null) {
+        rafId = requestAnimationFrame(updatePosition);
+      }
+    };
+
+    section.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      section.removeEventListener('mousemove', handleMouseMove);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+    };
+  }, [breakpoints.mobile]);
+
   const handleRocketLandingComplete = () => {
     console.log("¡Cohete aterrizó exitosamente! 🚀");
     // Mostrar personaje después de que aterrice el cohete
@@ -89,6 +129,26 @@ export default function Contact() {
 
       {/* Fondo canvas - cielo con sol */}
       <DaySkyWithSunCanvas className="absolute inset-0 w-full h-full" />
+
+      {/* OVNI que sigue el cursor */}
+      <img 
+        ref={ufoRef}
+        src="/assets/img/contact-section/ovni.webp"
+        alt="OVNI"
+        className="absolute pointer-events-none select-none"
+        style={{
+          zIndex: 12,
+          width: breakpoints.mobile ? '50px' : breakpoints.tablet ? '70px' : '80px',
+          height: 'auto',
+          left: 0,
+          top: 0,
+          transform: 'translate3d(var(--ufo-x, 70%), var(--ufo-y, 35%), 0) translate(-50%, -50%)',
+          transition: 'transform 120ms ease-out',
+          ['--ufo-x' as string]: '70%',
+          ['--ufo-y' as string]: '35%'
+        } as React.CSSProperties}
+        loading="lazy"
+      />
 
       {/* Imagen del escenario urbano en la parte inferior */}
       <img 

@@ -26,8 +26,13 @@ const AnimatedTitle: React.FC = () => {
   );
 };
 
+const REQUIRED_CLICKS = 10;
+
 const Hero: React.FC = () => {
   const [showInstructions, setShowInstructions] = useState(false);
+  const [clickProgress, setClickProgress] = useState(0);
+  const [totalCoreClicks, setTotalCoreClicks] = useState(0);
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,10 +42,39 @@ const Hero: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const body = document.body;
+    const html = document.documentElement;
+    const previousBodyOverflow = body.style.overflow;
+    const previousHtmlOverflow = html.style.overflow;
+
+    const preventTouchScroll = (event: TouchEvent) => {
+      event.preventDefault();
+    };
+
+    if (!isUnlocked) {
+      body.style.overflow = 'hidden';
+      html.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+      window.addEventListener('touchmove', preventTouchScroll, { passive: false });
+    }
+
+    return () => {
+      body.style.overflow = previousBodyOverflow;
+      html.style.overflow = previousHtmlOverflow;
+      window.removeEventListener('touchmove', preventTouchScroll);
+    };
+  }, [isUnlocked]);
+
   return (
     <div className="h-screen bg-black text-white relative overflow-hidden">
       {/* Canvas de fondo */}
-      <InteractiveCosmicCanvas />
+      <InteractiveCosmicCanvas
+        requiredClicks={REQUIRED_CLICKS}
+        onProgress={(count) => setClickProgress(count)}
+        onCoreClicks={(total) => setTotalCoreClicks(total)}
+        onUnlock={() => setIsUnlocked(true)}
+      />
       
       {/* Contenido superior - Limitado al 35% superior de la pantalla */}
       <div className="absolute top-0 left-0 right-0 z-10 h-[35vh] flex flex-col justify-center items-center px-6 md:px-10">
@@ -81,40 +115,87 @@ const Hero: React.FC = () => {
           style={{ animation: 'galaxyPulse 2s ease-in-out infinite, fadeIn 1s ease-out forwards' }}
         >
           <div className="flex flex-col items-center space-y-4">
-            <p className="text-sm md:text-base font-semibold tracking-wider uppercase"
-               style={{ 
-                 background: 'linear-gradient(45deg, #f97316, #fbbf24, #ffffff)',
-                 WebkitBackgroundClip: 'text',
-                 WebkitTextFillColor: 'transparent',
-                 backgroundClip: 'text',
-                 textShadow: '0 0 15px rgba(251, 191, 36, 0.6)',
-                 fontFamily: '"Exo 2", sans-serif',
-                 letterSpacing: '0.05em'
-               }}>
-              Haz clic en el núcleo de energía
-            </p>
-            <div className="flex items-center space-x-3">
-              <div 
-                className="w-4 h-4 rounded-full"
-                style={{ 
-                  background: 'radial-gradient(circle, #fbbf24, #f59e0b)',
-                  animation: 'cosmicPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
-                  boxShadow: '0 0 20px rgba(251, 191, 36, 0.8), 0 0 40px rgba(251, 191, 36, 0.4)'
-                }}
-              />
-              <span className="text-sm font-medium"
+            {!isUnlocked ? (
+              <>
+                <p className="text-sm md:text-base font-semibold tracking-wider uppercase"
+                   style={{ 
+                     background: 'linear-gradient(45deg, #f97316, #fbbf24, #ffffff)',
+                     WebkitBackgroundClip: 'text',
+                     WebkitTextFillColor: 'transparent',
+                     backgroundClip: 'text',
+                     textShadow: '0 0 15px rgba(251, 191, 36, 0.6)',
+                     fontFamily: '"Exo 2", sans-serif',
+                     letterSpacing: '0.05em'
+                   }}>
+                  Haz clic en el bigbang para crear el universo
+                </p>
+                <div className="flex items-center space-x-3">
+                  <div 
+                    className="w-4 h-4 rounded-full"
                     style={{ 
-                      background: 'linear-gradient(45deg, #f97316, #ffffff)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textShadow: '0 0 10px rgba(249, 115, 22, 0.4)',
-                      fontFamily: '"Exo 2", sans-serif',
-                      letterSpacing: '0.02em'
-                    }}>
-                para crear el universo
-              </span>
-            </div>
+                      background: 'radial-gradient(circle, #fbbf24, #f59e0b)',
+                      animation: 'cosmicPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+                      boxShadow: '0 0 20px rgba(251, 191, 36, 0.8), 0 0 40px rgba(251, 191, 36, 0.4)'
+                    }}
+                  />
+                  <span className="text-sm font-medium"
+                        style={{ 
+                          background: 'linear-gradient(45deg, #f97316, #ffffff)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          textShadow: '0 0 10px rgba(249, 115, 22, 0.4)',
+                          fontFamily: '"Exo 2", sans-serif',
+                          letterSpacing: '0.02em'
+                        }}>
+                    {clickProgress}/{REQUIRED_CLICKS} para la explosion
+                  </span>
+                </div>
+                <div className="flex items-center justify-center space-x-2">
+                  {Array.from({ length: REQUIRED_CLICKS }).map((_, index) => (
+                    <span
+                      key={index}
+                      className="w-2.5 h-2.5 rounded-full"
+                      style={{
+                        background: index < clickProgress
+                          ? 'radial-gradient(circle, #ffffff, #fbbf24)'
+                          : 'rgba(251, 191, 36, 0.25)',
+                        boxShadow: index < clickProgress
+                          ? '0 0 12px rgba(251, 191, 36, 0.9)'
+                          : 'none'
+                      }}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="text-sm md:text-base font-semibold tracking-wider uppercase"
+                   style={{ 
+                     background: 'linear-gradient(45deg, #f97316, #fbbf24, #ffffff)',
+                     WebkitBackgroundClip: 'text',
+                     WebkitTextFillColor: 'transparent',
+                     backgroundClip: 'text',
+                     textShadow: '0 0 15px rgba(251, 191, 36, 0.6)',
+                     fontFamily: '"Exo 2", sans-serif',
+                     letterSpacing: '0.05em'
+                   }}>
+                  Explosión completada
+                </p>
+                <span className="text-sm font-medium"
+                      style={{ 
+                        background: 'linear-gradient(45deg, #f97316, #ffffff)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        textShadow: '0 0 10px rgba(249, 115, 22, 0.4)',
+                        fontFamily: '"Exo 2", sans-serif',
+                        letterSpacing: '0.02em'
+                      }}>
+                  Ya puedes continuar hacia abajo
+                </span>
+              </>
+            )}
             
             {/* Flecha direccional animada con estilo galáctico */}
             <div className="mt-6">
@@ -145,6 +226,11 @@ const Hero: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Contador de clics */}
+      <div className="absolute bottom-4 left-4 z-10 text-xs text-white/90">
+        {totalCoreClicks} clics
+      </div>
 
       {/* Estilos CSS personalizados */}
       <style>{`

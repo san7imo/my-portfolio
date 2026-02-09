@@ -61,6 +61,23 @@ export const projectsData: Project[] = [
     liveUrl: "https://github.com/san7ilo/reto-python-fastapi",
     githubUrl: "https://github.com/san7ilo/reto-python-fastapi"
   },
+  // ✅ NUEVOS PROYECTOS
+  {
+    id: 9,
+    title: "FilonTech",
+    description: "Landing en React con experiencia visual premium: fondo interactivo con efecto hover y componentes orientados a conversión.",
+    date: "septiembre 2025",
+    technologies: ["React", "TailwindCSS v4", "CSS"],
+    images: [
+      "/assets/img/project-section/filontech.webp",
+      "/assets/img/project-section/filontech1.webp",
+      "/assets/img/project-section/filontech2.webp",
+      "/assets/img/project-section/filontech3.webp",
+      "/assets/img/project-section/filontech4.webp"
+    ],
+    liveUrl: "https://fil-ontech.com/",
+    githubUrl: "https://fil-ontech.com/"
+  },
   {
     id: 7,
     title: "LogicChat",
@@ -70,6 +87,24 @@ export const projectsData: Project[] = [
     images: ["/assets/img/project-section/logichat1.webp"],
     liveUrl: "https://logichat.co/",
     githubUrl: "https://logichat.co/"
+  },
+  {
+    id: 10,
+    title: "Millón de Amigos",
+    description: "Sitio en React con revista virtual interactiva y módulo de radio en vivo, diseñado para una experiencia inmersiva y moderna.",
+    date: "noviembre 2025",
+    technologies: ["React", "TailwindCSS v4", "CSS", "Librerías de revista virtual", "Radio en vivo"],
+    images: [
+      "/assets/img/project-section/millondeamigos.webp",
+      "/assets/img/project-section/millondeamigos1.webp",
+      "/assets/img/project-section/millondeamigos2.webp",
+      "/assets/img/project-section/millondeamigos3.webp",
+      "/assets/img/project-section/millondeamigos4.webp",
+      "/assets/img/project-section/millondeamigos5.webp",
+      "/assets/img/project-section/millondeamigos6.webp"
+    ],
+    liveUrl: "https://millondeamigos.com/",
+    githubUrl: "https://millondeamigos.com/"
   },
   {
     id: 8,
@@ -84,7 +119,7 @@ export const projectsData: Project[] = [
       "/assets/img/project-section/dilorecords4.webp",
       "/assets/img/project-section/dilorecords5.webp"
     ],
-  liveUrl: "https://dilorecords.com/",
+    liveUrl: "https://dilorecords.com/",
     githubUrl: "https://dilorecords.com/"
   }
 ];

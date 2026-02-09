@@ -45,17 +45,17 @@ const Timeline: React.FC<TimelineProps> = ({
     const planetConfigs = [
       {
         planetImage: "/assets/img/planets/riwi.webp",
-        planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
+        planetSize: window.innerWidth < 640 ? 0.95 : window.innerWidth < 1024 ? 1.5 : 2.1,
         depth: 0.7,
-        position: { x: 15, y: window.innerWidth < 640 ? 75 : 85 },
+        position: { x: 12, y: window.innerWidth < 640 ? 78 : 82 },
         loading: lazy
 
       },
       {
         planetImage: "/assets/img/planets/compraraiz.webp",
-        planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
+        planetSize: window.innerWidth < 640 ? 0.85 : window.innerWidth < 1024 ? 1.3 : 1.9,
         depth: 1.2,
-        position: { x: 35, y: window.innerWidth < 640 ? 25 : 35 },
+        position: { x: 22, y: window.innerWidth < 640 ? 26 : 30 },
         loading: lazy
 
       },
@@ -63,44 +63,58 @@ const Timeline: React.FC<TimelineProps> = ({
         planetImage: "/assets/img/planets/todorifas.webp",
         planetSize: window.innerWidth < 640 ? 1.2 : window.innerWidth < 1024 ? 2.1 : 3,
         depth: 0.6,
-        position: { x: 55, y: window.innerWidth < 640 ? 70 : 80 },
+        position: { x: 36, y: window.innerWidth < 640 ? 78 : 82 },
         loading: lazy
 
       },
       {
         planetImage: "/assets/img/planets/camionya.webp",
-        planetSize: window.innerWidth < 640 ? 0.9 : window.innerWidth < 1024 ? 1.4 : 1.9,
+        planetSize: window.innerWidth < 640 ? 0.95 : window.innerWidth < 1024 ? 1.5 : 2.1,
         depth: 1.1,
-        position: { x: 70, y: window.innerWidth < 640 ? 30 : 40 },
+        position: { x: 42, y: window.innerWidth < 640 ? 30 : 34 },
         loading: lazy
       },
       {
         planetImage: "/assets/img/planets/ciberseguridad.webp",
-        planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
-        depth: 0.5,
-        position: { x: 85, y: window.innerWidth < 640 ? 65 : 75 },
+        planetSize: window.innerWidth < 640 ? 0.85 : window.innerWidth < 1024 ? 1.3 : 1.9,
+        depth: 0.7,
+        position: { x: 48, y: window.innerWidth < 640 ? 75: 78 },
         loading: lazy
 
       },
       {
         planetImage: "/assets/img/planets/filavirtual.webp",
-        planetSize: window.innerWidth < 640 ? 0.8 : window.innerWidth < 1024 ? 1.3 : 1.8,
+        planetSize: window.innerWidth < 640 ? 0.7 : window.innerWidth < 1024 ? 1.4 : 1.8,
         depth: 1.0,
-        position: { x: 95, y: window.innerWidth < 640 ? 40 : 50 },
+        position: { x: 60, y: window.innerWidth < 640 ? 36 : 40 },
+        loading: lazy
+      },
+      {
+        planetImage: "/assets/img/planets/filontech.webp",
+        planetSize: window.innerWidth < 640 ? 2.0 : window.innerWidth < 1024 ? 3.7 : 3.9,
+        depth: 1.0,
+        position: { x: 75, y: window.innerWidth < 640 ? 100 : 105 },
         loading: lazy
       },
       {
         planetImage: "/assets/img/planets/logichat.webp",
-        planetSize: window.innerWidth < 640 ? 1.15 : window.innerWidth < 1024 ? 1.9 : 2.8,
-        depth: 0.8,
-        position: { x: 74, y: window.innerWidth < 640 ? 78 : 92 },
+        planetSize: window.innerWidth < 640 ? 1.8 : window.innerWidth < 1024 ? 2.5 : 3.5,
+        depth: 0.9,
+        position: { x: 82, y: window.innerWidth < 640 ? 40 : 44 },
+        loading: lazy
+      },
+      {
+        planetImage: "/assets/img/planets/millondeamigos.webp",
+        planetSize: window.innerWidth < 640 ? 2.8 : window.innerWidth < 1024 ? 3.2 : 3.7,
+        depth: 0.85,
+        position: { x: 94, y: window.innerWidth < 640 ? 90 : 94 },
         loading: lazy
       },
       {
         planetImage: "/assets/img/planets/dilorecords.webp",
-        planetSize: window.innerWidth < 640 ? 0.9 : window.innerWidth < 1024 ? 1.4 : 1.9,
-        depth: 0.9,
-        position: { x: 10, y: window.innerWidth < 640 ? 45 : 35 },
+        planetSize: window.innerWidth < 640 ? 1.5 : window.innerWidth < 1024 ? 2.0 : 2.8,
+        depth: 1.0,
+        position: { x: 100, y: window.innerWidth < 640 ? 34 : 40 },
         loading: lazy
       }
     ];
@@ -379,27 +393,28 @@ const Timeline: React.FC<TimelineProps> = ({
                   />
                 </div>
               )}
-            </button>
-            
-            {/* Solo fecha del planeta - oculta en móviles */}
-            <div 
-              className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 sm:mt-3 text-center transition-all duration-500 hidden sm:block ${
-                isActive ? 'opacity-100 scale-110' : 'opacity-70 hover:opacity-90'
-              }`}
-            >
-              <p 
-                className={`font-medium whitespace-nowrap ${
-                  isActive 
-                    ? 'text-orange-300' 
-                    : 'text-gray-400'
+
+              {/* Fecha dentro del planeta - oculta en móviles */}
+              <div 
+                className={`absolute inset-x-0 bottom-2 text-center transition-all duration-500 hidden sm:block pointer-events-none ${
+                  isActive ? 'opacity-100 scale-110' : 'opacity-70'
                 }`}
-                style={{ 
-                  fontSize: `${0.7 + (planet.depth * 0.2)}rem`
-                }}
               >
-                {formatDate(planet.date)}
-              </p>
-            </div>
+                <p 
+                  className={`font-medium whitespace-nowrap ${
+                    isActive 
+                      ? 'text-orange-200' 
+                      : 'text-white/80'
+                  }`}
+                  style={{ 
+                    fontSize: `${0.7 + (planet.depth * 0.2)}rem`,
+                    textShadow: '0 0 10px rgba(0, 0, 0, 0.6)'
+                  }}
+                >
+                  {formatDate(planet.date)}
+                </p>
+              </div>
+            </button>
           </div>
         );
       })}
