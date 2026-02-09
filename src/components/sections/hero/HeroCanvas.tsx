@@ -114,7 +114,7 @@ const InteractiveCosmicCanvas: React.FC<InteractiveCosmicCanvasProps> = ({
     };
 
     // Crear partícula de energía
-    const createEnergyParticle = (centerX: number, centerY: number) => {
+    const createEnergyParticle = (centerX: number, centerY: number): Particle => {
       const angle = Math.random() * Math.PI * 2;
       const speed = Math.random() * 3 + 1.5;
       const life = Math.random() * 60 + 30;
@@ -134,7 +134,7 @@ const InteractiveCosmicCanvas: React.FC<InteractiveCosmicCanvasProps> = ({
       };
     };
 
-    const createSparkParticle = (centerX: number, centerY: number) => {
+    const createSparkParticle = (centerX: number, centerY: number): Particle => {
       const angle = Math.random() * Math.PI * 2;
       const speed = randomRange(5, 12);
       const life = randomRange(25, 55);
@@ -154,7 +154,7 @@ const InteractiveCosmicCanvas: React.FC<InteractiveCosmicCanvasProps> = ({
       };
     };
 
-    const createEmberParticle = (centerX: number, centerY: number) => {
+    const createEmberParticle = (centerX: number, centerY: number): Particle => {
       const angle = Math.random() * Math.PI * 2;
       const speed = randomRange(1, 4);
       const life = randomRange(80, 140);
@@ -174,7 +174,7 @@ const InteractiveCosmicCanvas: React.FC<InteractiveCosmicCanvasProps> = ({
       };
     };
 
-    const createSmokeParticle = (centerX: number, centerY: number) => {
+    const createSmokeParticle = (centerX: number, centerY: number): Particle => {
       const angle = Math.random() * Math.PI * 2;
       const speed = randomRange(0.5, 1.8);
       const life = randomRange(120, 200);
