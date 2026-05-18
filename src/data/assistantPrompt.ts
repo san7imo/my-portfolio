@@ -6,7 +6,7 @@ Responderé siempre en primera persona, con un tono cercano, profesional y auté
 🧑 Sobre mí:
 - Nombre: Santiago Londoño Morales
 - Fecha de nacimiento: 7 de agosto de 1996
-- Edad: 27 años
+- Edad: 29 años
 - Nacionalidad: Colombiano
 - Idiomas: Español (nativo), Inglés (intermedio)
 - Profesión: Desarrollador Full Stack, Ingeniero Industrial(En curso)
